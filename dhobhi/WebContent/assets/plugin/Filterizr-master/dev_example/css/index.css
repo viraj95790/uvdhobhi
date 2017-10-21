@@ -1,0 +1,101 @@
+/*body {
+    margin-top: 1rem;
+}*/
+.filtr-item {
+    padding: 1rem;
+}
+.item-desc {
+    /*background-color: rgba(0,0,0,0.5);*/
+    color: white;
+    position: absolute;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0rem;
+    z-index: 1;
+    bottom: 71px;
+    left: 1rem;
+    right: 1rem;
+    font-size: 14px;
+    font-weight: normal;
+}
+.prodaction {
+   float: left;
+width: 100%;
+padding: 0px 0px 10px 0px;
+border: 2px solid #dedede;
+}
+.inpuqty1 {
+    width: 36%;
+    height: 32px;
+    font-size: 15px;
+}
+.titetxt{
+   font-size: 13px;
+color: rgb(0, 0, 0);
+font-weight: normal;
+}
+.managefil{
+    width: 27%;
+float: right;
+}
+.filtern{
+    font-size: 17px;
+color: rgb(0, 0, 0);
+font-weight: normal;
+margin-right: 15px;
+}
+.abtn{
+    float:left;
+}
+.rate{
+    float:right;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* Filter controls */
+.simplefilter li, .multifilter li, .sortandshuffle li {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 0rem 1rem;
+    font-size: 14px;
+    font-weight: normal;
+}
+.simplefilter li {
+    background-color: #585858;
+}
+.simplefilter li.active {
+    background-color: #212121;
+}
+.multifilter li {
+    background-color: #4b9eff;
+}
+.multifilter li.active {
+    background-color: #2265b4;
+}
+
+/* Shuffle and sort controls */
+select {
+    padding: 1rem 1rem;
+    text-transform: uppercase;
+}
+.sortandshuffle .shuffle-btn {
+    background-color: #dec800;
+}
+.sortandshuffle .sort-btn {
+    background-color: #de0000;
+}
+.sortandshuffle .sort-btn.active {
+    background-color: #9d0000;
+}
+
+/* Search control */
+/*.search-row {
+    margin-left: 2.5rem;
+}*/
+.filtr-search {
+    padding: 0.5rem;
+    text-transform: uppercase;
+}

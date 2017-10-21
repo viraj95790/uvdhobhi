@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+ <definition name="adminbaseLayout" template="/common/pages/tiles/adminBaselayout.jsp">
+      <put-attribute name="title"  value="Pacs"/>
+      <put-attribute name="header" value="/common/pages/tiles/adminBaseheader.jsp"/>
+       <put-attribute name="menu" value="/common/pages/tiles/adminMenu.jsp"/>
+      <put-attribute name="body"   value="/common/pages/tiles/Body.jsp"/>
+      <put-attribute name="footer"   value="/common/pages/tiles/adminBaseFooter.jsp"/>
+  </definition>
+  
+   <definition name="adminbaseLayout1" template="/common/pages/tiles/adminBaselayout.jsp">
+      <put-attribute name="title"  value="Pacs"/>
+      <put-attribute name="header" value=""/>
+       <put-attribute name="menu" value=""/>
+      <put-attribute name="body"   value="/common/pages/tiles/Body.jsp"/>
+      <put-attribute name="footer"   value=""/>
+  </definition>
+
+  <definition name="baseLayout" template="/common/pages/tiles/baseLayout.jsp">
+      <put-attribute name="title"  value="Nagpur Inventory Management"/>
+      <put-attribute name="header" value="/common/pages/tiles/BaseHeader.jsp"/>
+       <put-attribute name="menu" value="/common/pages/tiles/menu.jsp"/>
+      <put-attribute name="body"   value="/common/pages/tiles/Body.jsp"/>
+      <put-attribute name="footer"   value="/common/pages/tiles/BaseFooter.jsp"/>
+  </definition>
+  
+    <definition name="baseLayout1" template="/common/pages/tiles/baseLayout.jsp">
+      <put-attribute name="title"  value="Nagpur Inventory Management"/>
+      <put-attribute name="header" value=""/>
+       <put-attribute name="menu" value=""/>
+      <put-attribute name="body"   value="/common/pages/tiles/Body.jsp"/>
+      <put-attribute name="footer"   value=""/>
+  </definition>
+  
+   		<definition name="sessionExpire" extends="baseLayout1">
+   			 <put-attribute name="menu" value=""/>
+	    	<put-attribute name="body" value="/common/pages/sessionExpire.jsp" /> 
+	    </definition>
+
+  
+ 
+  <definition name="homepage" extends="baseLayout">
+   	<put-attribute name="body" value="/common/pages/homepage.jsp"/>      
+  </definition>
+  
+   <definition name="inputlogin" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/common/pages/login.jsp"/>      
+  </definition>
+  
+  <definition name="ourSector" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/oursector.jsp"/>      
+  </definition>
+  
+  <definition name="adminpage" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/admin/pages/adminpage.jsp"/>      
+  </definition>
+  
+   <definition name="custregisteration" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/custregistration.jsp"/>      
+  </definition>
+  
+  <definition name="displaycust" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/displaycust.jsp"/>      
+  </definition>
+  
+  <definition name="editcustRegistration" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/editcustregistration.jsp"/>      
+  </definition>
+  
+  <definition name="productCatelog" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/productcatelog.jsp"/>      
+  </definition>
+  
+  <definition name="addServices" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/addservices.jsp"/>      
+  </definition>
+  
+  <definition name="displayServices" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/displayServices.jsp"/>      
+  </definition>
+  
+  <definition name="ediServices" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/editservices.jsp"/>      
+  </definition>
+  
+  <definition name="addItem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/additem.jsp"/>      
+  </definition>
+  
+  <definition name="displayItem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/displayitem.jsp"/>      
+  </definition>
+  
+  <definition name="editItem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/edititem.jsp"/>      
+  </definition>
+  
+  <definition name="addsubItem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/addsubitem.jsp"/>      
+  </definition>
+  
+  <definition name="displaysubItem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/displaysubitem.jsp"/>      
+  </definition>
+  
+  <definition name="editSubitem" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/editsubitem.jsp"/>      
+  </definition>
+  
+  <definition name="viewCart" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/viewcart.jsp"/>      
+  </definition>
+  
+  <definition name="displaycartReport" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/register/pages/displaycartReport.jsp"/>      
+  </definition>
+  
+
+  
+  <definition name="sendotp" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/sendotp.jsp"/>      
+  </definition>
+  
+   <definition name="thx" extends="baseLayout">
+   	<put-attribute name="body" value="/register/pages/thanku.jsp"/>      
+  </definition>
+  
+  <definition name="charge_invoice" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/account/pages/charge_invoice.jsp"/>      
+  </definition>
+  
+  <definition name="customer_invoice" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/account/pages/customer_invoice.jsp"/>      
+  </definition>
+  
+  <definition name="record_payment" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/account/pages/record_payment.jsp"/>      
+  </definition>
+  
+   <definition name="adminrecord_payment" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/account/pages/adminrecord_payment.jsp"/>      
+  </definition>
+  
+  <definition name="Vendor_Invoice" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/account/pages/vendor_invoice.jsp"/>      
+  </definition>
+  
+     <definition name="vbarcode" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/account/pages/vbarcode.jsp"/>      
+  </definition>
+  
+  <definition name="cbarcode" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/account/pages/cbarcode.jsp"/>      
+  </definition>
+  
+   <definition name="pbarcode" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/account/pages/pbarcode.jsp"/>      
+  </definition>
+  
+  <definition name="readBarcode" extends="adminbaseLayout">
+   	<put-attribute name="body" value="/account/pages/readbarcode.jsp"/>      
+  </definition>
+  
+</tiles-definitions>

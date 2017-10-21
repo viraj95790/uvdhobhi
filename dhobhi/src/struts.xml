@@ -1,0 +1,92 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	 
+	 
+  <package name="default" extends="struts-default">
+
+    
+        <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<global-results>
+			
+  			<result name="login" type="tiles">sessionExpire</result>
+  		</global-results>
+		
+       <action name="*Default" method="{1}" class="com.laundry.main.web.action.DefaultUserAction">
+			<result name="homepage" type="tiles">homepage</result>
+		</action>
+		
+		<action name="*Login" method="{1}" class="com.laundry.main.web.action.LoginAction">
+		    <result name="input" type="tiles">inputlogin</result>
+			<result name="homepage" type="tiles">homepage</result>
+			<result name="success" type="redirect">Default</result>
+			<result name="adminpage" type="redirect">Registration</result>
+		</action>
+		
+		<action name="*Logout" method="{1}" class="com.laundry.main.web.action.LogoutAction">
+			<result name="success" type="redirect">inputLogin</result>
+		</action>
+		
+		   <action name="*Registration" method="{1}" class="com.laundry.Register.web.action.RegistrationAction">
+			<result name="input" type="tiles">custregisteration</result>
+			<result name="success" type="tiles">displaycust</result>
+			<result name="registerdata" type="redirect">Registration</result>
+			<result name="edit" type="tiles">editcustRegistration</result>
+			<result name="update" type="redirect">Registration</result>
+			<result name="goforlogin" type="redirect">inputLogin</result>
+			<result name="inputoursector" type="tiles">ourSector</result>
+			
+		</action>
+		
+		<action name="*Service" method="{1}" class="com.laundry.Register.web.action.ServiceAction">
+		    <result name="input" type="tiles">productCatelog</result>
+		    <result name="cartinvoice" type="tiles">viewCart</result>
+		    <result name="sendotp" type="tiles">sendotp</result>
+			<result name="thx" type="tiles">thx</result>
+			<result name="displaycart" type="tiles">displaycartReport</result>
+			<result name="createinvoice" type="redirect">Account</result>
+			
+		</action>
+		
+		<action name="*Master" method="{1}" class="com.laundry.Register.web.action.MasterAction">
+		     <result name="input" type="tiles">addServices</result>
+		     <result name="success" type="tiles">displayServices</result>
+		     <result name="editservices" type="tiles">ediServices</result>
+		     <result name="inputitem" type="tiles">addItem</result>
+		     <result name="displayitem" type="tiles">displayItem</result>
+		     <result name="edititem" type="tiles">editItem</result>
+		     <result name="inputsubitem" type="tiles">addsubItem</result>
+		     <result name="displaysubitem" type="tiles">displaysubItem</result>
+		     <result name="editsubitem" type="tiles">editSubitem</result>
+		     
+		     
+		</action>
+
+        <action name="*Account" method="{1}" class="com.laundry.Account.web.action.AccountAction">
+           <result name="success" type="tiles">charge_invoice</result>
+           <result name="createinvoice" type="tiles">customer_invoice</result>
+           <result name="inputpayment" type="tiles">record_payment</result>
+           <result name="inputadminrecord" type="tiles">adminrecord_payment</result>
+           <result name="vendorinvoice" type="tiles">Vendor_Invoice</result>
+           <result name="readbarcode" type="tiles">readBarcode</result>
+           
+        </action>
+        
+        <action name="*Barcode" method="{1}" class="com.laundry.Account.web.action.BarcodeAction">
+        	<result name="vbarcode" type="tiles">vbarcode</result>
+        	<result name="cbarcode" type="tiles">cbarcode</result>
+        	<result name="pbarcode" type="tiles">pbarcode</result>
+        </action>
+		
+		
+		
+		 
+		    
+    </package>
+</struts>
