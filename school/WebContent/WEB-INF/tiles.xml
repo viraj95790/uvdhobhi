@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/common/pages/tiles/baseLayout.jsp">
+		<put-attribute name="title" value="Pacs" />
+		<put-attribute name="header" value="/common/pages/tiles/BaseHeader.jsp" />
+		<put-attribute name="menu" value="/common/pages/tiles/menu.jsp" />
+		<put-attribute name="body" value="/common/pages/tiles/Body.jsp" />
+		<put-attribute name="footer" value="/common/pages/tiles/BaseFooter.jsp" />
+	</definition>
+
+	<definition name="baseLayout1" template="/common/pages/tiles/baseLayout.jsp">
+		<put-attribute name="title" value="Pacs" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/common/pages/tiles/Body.jsp" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="sessionExpire" extends="baseLayout">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/user/pages/sessionExpire.jsp" />
+	</definition>
+
+
+
+	<definition name="homepage" extends="baseLayout">
+		<put-attribute name="body" value="/common/pages/homepage.jsp" />
+	</definition>
+
+
+
+	<definition name="inputlogin" extends="baseLayout">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/user/pages/login.jsp" />
+	</definition>
+
+	<definition name="logout" extends="baseLayout">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/user/pages/loggedout.jsp" />
+	</definition>
+
+
+	<definition name="addmaster" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/addmaster.jsp" />
+	</definition>
+
+	<definition name="displaymaster" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/displaymaster.jsp" />
+	</definition>
+
+	<definition name="report" extends="baseLayout1">
+		<put-attribute name="body" value="/master/pages/rportcard.jsp" />
+	</definition>
+
+	<definition name="addClasses" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/addclasses.jsp" />
+	</definition>
+
+	<definition name="displayClasses" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/displayclasses.jsp" />
+	</definition>
+
+	<definition name="addSubject" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/addsubject.jsp" />
+	</definition>
+
+	<definition name="displaySubject" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/displaysubject.jsp" />
+	</definition>
+
+	<definition name="addStudent" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/addstudent.jsp" />
+	</definition>
+
+	<definition name="editStudent" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/editstudent.jsp" />
+	</definition>
+
+
+</tiles-definitions>

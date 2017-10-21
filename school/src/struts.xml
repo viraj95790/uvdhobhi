@@ -1,0 +1,73 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+
+
+	<package name="default" extends="struts-default">
+
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<global-results>
+			<result name="login" type="tiles">sessionExpire</result>
+		</global-results>
+
+		<action name="*Default" method="{1}"
+			class="com.pacs.main.web.action.DefaultUserAction">
+			<result name="homepage" type="tiles">homepage</result>
+		</action>
+
+
+
+
+
+
+		<action name="*Login" method="{1}"
+			class="com.pacs.main.web.action.LoginAction">
+			<result name="input" type="tiles">inputlogin</result>
+			<result name="success" type="redirect">Master</result>
+
+		</action>
+
+		<action name="*Logout" method="{1}"
+			class="com.pacs.main.web.action.LogoutAction">
+			<result name="success" type="redirect">inputLogin</result>
+		</action>
+
+
+
+		<action name="*Master" method="{1}"
+			class="com.Lang.Master.web.action.MasterAction">
+			<result name="input" type="tiles">addmaster</result>
+			<result name="success" type="tiles">displaymaster</result>
+			<result name="save" type="redirect">Master</result>
+			<result name="inputstandard" type="tiles">addClasses</result>
+			<result name="displaystandard" type="tiles">displayClasses</result>
+			<result name="inputsubject" type="tiles">addSubject</result>
+			<result name="displaysubject" type="tiles">displaySubject</result>
+			<result name="inputstudentinfo" type="tiles">addStudent</result>
+			<result name="addstudent" type="redirect">inputstudentinfoMaster</result>
+			<result name="editstudent" type="tiles">editStudent</result>
+			<result name="updatestudent" type="redirect">inputstudentinfoMaster</result>
+			<result name="report" type="tiles">report</result>
+
+		</action>
+
+
+
+
+
+
+
+
+
+
+
+	</package>
+</struts>
