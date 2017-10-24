@@ -556,7 +556,7 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return list;
 	}
 
-	@Override
+	
 	public ArrayList<Master> getVendorList() {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
@@ -580,7 +580,7 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return list;
 	}
 
-	@Override
+	
 	public ArrayList<Master> getcustomerinfo(int id) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;

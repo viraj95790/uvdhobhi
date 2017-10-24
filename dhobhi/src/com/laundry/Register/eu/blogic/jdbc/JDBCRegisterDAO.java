@@ -223,7 +223,7 @@ public class JDBCRegisterDAO extends JDBCBaseDAO implements RegisterDAO {
 		return register;
 	}
 
-	@Override
+	
 	public int updateclientstatus(String selectedid, String status) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;

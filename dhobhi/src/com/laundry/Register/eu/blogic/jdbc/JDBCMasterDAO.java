@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.Catch;
+
 
 import com.laundry.Register.eu.bi.MasterDAO;
 import com.laundry.Register.eu.bi.RegisterDAO;
 import com.laundry.Register.eu.entity.Master;
 import com.laundry.Register.eu.entity.Register;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
+
 
 
 
@@ -340,7 +340,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 			return result;
 		}
 
-		@Override
+	
 		public ArrayList<Master> gethospitalList() {
 			// TODO Auto-generated method stub
 			PreparedStatement preparedStatement = null;

@@ -128,7 +128,7 @@ public class BarcodeAction extends BaseAction implements ModelDriven<MasterForm>
 		return "cbarcode";
 	}
 
-	@Override
+	
 	public MasterForm getModel() {
 		// TODO Auto-generated method stub
 		return masterForm;
