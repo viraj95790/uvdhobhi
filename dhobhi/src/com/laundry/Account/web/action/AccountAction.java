@@ -135,6 +135,7 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
 			accountForm.setMasterProductList(itemlist);
 			
 			Account account = itemlist.get(itemlist.size()-1);
+			accountForm.setOrderamount(account.getOrderamount());
 			accountForm.setDebit(account.getDebit());
 			accountForm.setGst(account.getGst());
 			accountForm.setTotalcgstvalue(account.getTotalcgstvalue());

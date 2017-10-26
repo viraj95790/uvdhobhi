@@ -134,7 +134,7 @@
                         <div class="col-lg-3 col-md-3 text-right">
                             <div class="citemprice">
                                 <p class="cprice">Rs. <strong id="sub97">00.00</strong></p>
-                                <p class="cprice">Rs. <strong id="sub97">00.00</strong></p>
+                                <p class="cprice">Rs. <strong id="sub97"><s:property value="orderamount"/></strong></p>
                                 <p class="cprice">Rs. <strong id="sub97"><s:property value="totalcgstvalue"/></strong></p>
                                 <p class="cprice">Rs. <strong id="sub97"><s:property value="totalsgstvalue"/></strong></p>
                                 <p class="cprice">Rs. <strong id="sub97">00.00</strong></p>

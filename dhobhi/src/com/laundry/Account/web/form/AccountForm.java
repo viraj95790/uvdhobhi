@@ -63,6 +63,8 @@ public class AccountForm {
 	
 	private String barcodeid;
 	
+	private String orderamount;
+	
 	
 	
 	
@@ -84,6 +86,14 @@ public class AccountForm {
 	
 	
 	
+	public String getOrderamount() {
+		return orderamount;
+	}
+
+	public void setOrderamount(String orderamount) {
+		this.orderamount = orderamount;
+	}
+
 	public String getBarcodeid() {
 		return barcodeid;
 	}

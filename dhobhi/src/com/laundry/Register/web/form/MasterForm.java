@@ -52,6 +52,8 @@ public class MasterForm {
 	
 	private String totalsgstvalue;
 	
+	private String orderamount;
+	
 	
 	private ArrayList<Master> serviceList;
 	private ArrayList<Master> itemList;
@@ -84,6 +86,14 @@ public class MasterForm {
 	
 	
 	
+	public String getOrderamount() {
+		return orderamount;
+	}
+
+	public void setOrderamount(String orderamount) {
+		this.orderamount = orderamount;
+	}
+
 	public ArrayList<Master> getHospitallist() {
 		return hospitallist;
 	}

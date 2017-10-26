@@ -326,8 +326,11 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			int invoiceid = serviceDAO.insertcartdata(loginInfo.getUserId(), cart1, loginInfo.getId());
 			
 		    ArrayList<Cart> cartlist = (ArrayList<Cart>) session.getAttribute("cartList");
-			double total = 0;
+			double total = 0, orderamt=0;
 			for(Cart cart : cartlist){
+				double orderamount = Double.parseDouble(cart.getTotalprice());
+				orderamt = orderamt+orderamount;
+				
 				int r = serviceDAO.savedata(cart, invoiceid);
 				
 				double gst = Double.parseDouble(cart.getCgst()) + Double.parseDouble(cart.getSgst());
@@ -337,7 +340,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 				total = total + totalprice;
 			}
 			
-			
+			System.out.println(orderamt);
 		    System.out.println(total);
 		    
 		    int updatedebit = serviceDAO.getdebitupdated(invoiceid, total);
@@ -348,6 +351,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		    Master master = assesementList.get(assesementList.size()-1);
 		    
 		    masterForm.setCarttotal(DateTimeUtils.changeFormat(total));
+		    masterForm.setOrderamount(DateTimeUtils.changeFormat(orderamt));
 		    
 		    masterForm.setTotalcgstvalue(master.getTotalcgstvalue());
 		    masterForm.setTotalsgstvalue(master.getTotalsgstvalue());

@@ -202,6 +202,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				account.setGst(DateTimeUtils.changeFormat(cart.getGst()));
 				account.setTotalcgstvalue(cart.getTotalcgstvalue());
 				account.setTotalsgstvalue(cart.getTotalsgstvalue());
+				account.setOrderamount(cart.getOrderamount());
 				
 				
 				account.setTotaldebit(account.getDebit());
@@ -223,7 +224,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Cart> list = new ArrayList<Cart>();
-		double totalcgstvalue = 0, totalsgstvalue = 0, totaldebit=0;
+		double totalcgstvalue = 0, totalsgstvalue = 0, totaldebit=0, orderamt=0;
 		
 		String sql = "SELECT  cartcharge_invoice.customerid, cartcharge_invoice.date, cartcharge_invoice.debit, discount, subitem, quantity, price"
 				     +" from cartcharge_invoice inner join cartcharge_product on cartcharge_product.charge_invoiceid = cartcharge_invoice.id"
@@ -248,6 +249,9 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				
 				double total = rs.getDouble(7) * rs.getInt(6);
 				cart.setTotalamount(DateTimeUtils.changeFormat(total));
+				
+				orderamt = orderamt+total;
+				cart.setOrderamount(DateTimeUtils.changeFormat(orderamt));
 				
 				double cgst = getcgst(cart.getSubitem(), item);
 				double sgst = getsgst(cart.getSubitem(), item);
@@ -405,7 +409,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 		sql.append("select id, customerid, charge_invoice, payment, paymode, date, vendorid from customer_payment");
 		sql.append(" where date between '"+fromdate+"' and '"+todate+"'  ");
 		if(!vendorid.equals("0")){
-			sql.append(" and vendorid='"+vendorid+"' ");
+			sql.append(" and customerid='"+vendorid+"' ");
 		}if(!howpaid.equals("0")){
 			sql.append(" and paymode='"+howpaid+"'  ");
 		}

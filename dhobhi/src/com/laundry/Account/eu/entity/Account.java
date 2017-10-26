@@ -53,12 +53,23 @@ public class Account {
 	
 	private String barcode;
 	
+	private String orderamount;
 	
 	
 	
 	
 	
 	
+	
+
+	
+	public String getOrderamount() {
+		return orderamount;
+	}
+
+	public void setOrderamount(String orderamount) {
+		this.orderamount = orderamount;
+	}
 
 	public String getBarcode() {
 		return barcode;

@@ -122,7 +122,7 @@ h2,.h2,h3,.h3 {
 						</div>
 						
 						<div class="col-lg-4 col-md-4 col-sm-4 text-right">
-							<b style="color: #fff;">Vendor Information</b>
+							<b style="color: #fff;"><!-- Vendor Information --></b>
 							<p style="color: #fff;">
 								<s:property value="vname" />
 							</p>
@@ -197,7 +197,7 @@ h2,.h2,h3,.h3 {
 																</p> <s:property value="subitem" />
 															</td>
 															<td style="width: 0%;" class="text-left"><s:property
-																	value="qty" /> (<s:property value="gst"/>%)</td>
+																	value="qty" /></td>
 
 															<%-- <td style="width: 0%;" class="text-left">
                                                             <s:property value="gst"/>
@@ -232,14 +232,14 @@ h2,.h2,h3,.h3 {
 													<td style="width: 0%;">Order Amount</td>
 													<td class="text-right">
 														<div class="citemprice">
-															<span class="cprice">Rs. <strong id="sub97">0.00</strong></span>
+															<span class="cprice">Rs. <strong id="sub97"><s:property value="orderamount"/></strong></span>
 														</div>
 													</td>
 												</tr>
 
 												<tr>
 													<td style="width: 65%;" class="text-left"></td>
-													<td style="width: 0%;">CGST Amount</td>
+													<td style="width: 0%;"> CGST (9%)</td>
 													<td class="text-right">
 														<div class="citemprice">
 															<span class="cprice">Rs. <strong id="sub97"><s:property
@@ -250,7 +250,7 @@ h2,.h2,h3,.h3 {
 
 												<tr>
 													<td style="width: 65%;" class="text-left"></td>
-													<td style="width: 0%;">SGST Amount</td>
+													<td style="width: 0%;">SGST (9%)</td>
 													<td class="text-right">
 														<div class="citemprice">
 															<span class="cprice">Rs. <strong id="sub97"><s:property
