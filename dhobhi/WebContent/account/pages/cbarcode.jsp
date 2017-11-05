@@ -50,7 +50,7 @@
     				<div class="row">
     					<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12" style="margin-bottom: 15px;">
     					
-    					<% for(int j=1;j<=4;j++){%>
+    					<% for(int j=1;j<=1;j++){%>
     					<% if(t==totalBarcodeList.size())
     						{
     							break;

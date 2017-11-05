@@ -37,7 +37,7 @@
 			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
 			    			<p><%=barcode.getName() %></p>	
 	    				</div>
-		    			<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+		    			<%-- <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
 			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
 			    			<p><%=barcode.getName() %></p>	
 	    				</div>
@@ -48,7 +48,7 @@
 		    			<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
 			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
 			    			<p><%=barcode.getName() %></p>	
-	    				</div>
+	    				</div> --%>
     				</div>
     			</div>
     			
