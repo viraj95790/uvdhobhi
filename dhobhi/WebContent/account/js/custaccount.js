@@ -99,6 +99,9 @@ function getbarcodedataRequest(){
 				
 				document.getElementById('barcode').value = '';
 				
+				document.getElementById('barcode').Focus();
+				
+				
 			}
 		}
 	 
