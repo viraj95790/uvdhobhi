@@ -10,6 +10,8 @@
 	type="text/javascript"></script>
 <script src="popupdialog/dialog/js/jquery-ui.min.js"
 	type="text/javascript"></script>
+	
+<script type="text/javascript" src="master/js/master.js"></script>
 
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 
@@ -34,19 +36,35 @@
 		<div class="col-lg-2 col-md-12 col-xs-12">
 			<s:select  name="classid" id="classid" list="classNameList"
 			listKey="id" listValue="name" headerKey="0" headerValue="Select Class Name"
-			cssClass="form-control"/>
+			onchange="maintermlist(this.value)"  cssClass="form-control"/>
 		</div>
 		
-		<div class="col-lg-2 col-md-12 col-xs-12">
-			<s:select  name="terms" id="terms" list="termList"
-			listKey="id" listValue="name" headerKey="0" headerValue="Select Terms"
-			cssClass="form-control"/>
+		<div class="col-lg-2 col-md-12 col-xs-12" id="maintermid">
+			<select id="mainterm" name="mainterm" class="form-control" onchange="showexamtype(this.value)" >
+                <option value="0">Select Terms</option>
+             </select>
 		</div>
+		
+		<div class="col-lg-2 col-md-12 col-xs-12" id="examid">
+			<select id="terms" name="terms" class="form-control" >
+                <option value="0">Select Exam Type</option>
+             </select>
+             
+             <s:hidden name="terms" id="hiddenid"></s:hidden>
+		</div>
+		
+		
+		
+		<%-- <div class="col-lg-2 col-md-12 col-xs-12" id="examid">
+			<s:select  name="terms" id="terms" list="termList"
+			listKey="id" listValue="name" headerKey="0" headerValue="Select Exam Type"
+			cssClass="form-control"/>
+		</div> --%>
 		<div class="col-lg-2 col-md-12 col-xs-12">
 			<s:textfield cssClass="form-control"  name="searchText" id="searchText" placeholder="Search by name and roll number"/>
 		</div>
 		<div class="col-lg-1 col-md-12 col-xs-12">
-			<input type="submit" value=" GO ">
+			<input type="button" value=" GO " onclick="showdata()">
 		</div>
 		<div class="col-lg-3 col-md-12 col-xs-12">
 			<a href="#" onclick="openDisplayPopup('reportMaster?classid=<s:property value="classid"/>&terms=<s:property value="terms"/>')">Creat Report For All</a>

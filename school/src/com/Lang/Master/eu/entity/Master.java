@@ -27,6 +27,7 @@ public class Master {
 	private String handicap;
 	private String grnum;
 	private String housedress;
+	private String mainterm;
 	
 	
 	
@@ -41,6 +42,12 @@ public class Master {
 	
 	
 	
+	public String getMainterm() {
+		return mainterm;
+	}
+	public void setMainterm(String mainterm) {
+		this.mainterm = mainterm;
+	}
 	public String getFirstname() {
 		return firstname;
 	}

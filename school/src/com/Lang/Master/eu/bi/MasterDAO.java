@@ -55,4 +55,8 @@ public interface MasterDAO {
 
 	int deletestudent(String selectedid);
 
+	ArrayList<Master> getmasterTermlist(String classid);
+
+	ArrayList<Master> showtermlist(String mainterm);
+
 }

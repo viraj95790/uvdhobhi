@@ -149,6 +149,73 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 	}
 	
 	
+	public String mainterm() throws Exception{
+		Connection connection = null;
+		String classid = request.getParameter("classid");
+		try {
+			connection = Connection_provider.getconnection();
+			MasterDAO masterDAO = new JDBCMasterDAO(connection);
+			
+			ArrayList<Master> maintermList = masterDAO.getmasterTermlist(classid);
+			StringBuffer str = new StringBuffer();
+			str.append("<select name='mainterm' id='mainterm' onchange='showexamtype(this.value)' class='form-control'>");
+			str.append("<option value='0'>Select Terms</option>");
+			
+			for(Master master : maintermList){
+				str.append("<option value='"+master.getId()+"'>"+master.getMainterm()+"</option>");
+			}
+			
+			str.append("</select>");
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			response.getWriter().write(str.toString());
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return null;
+		
+	}
+	
+	public String examtype() throws Exception{
+		Connection connection = null;
+		String mainterm = request.getParameter("mainterm");
+		try {
+			connection = Connection_provider.getconnection();
+			MasterDAO masterDAO = new JDBCMasterDAO(connection);
+			
+			ArrayList<Master> maintermList = masterDAO.showtermlist(mainterm);
+			StringBuffer str = new StringBuffer();
+			str.append("<select name='name' id='terms' class='form-control'>");
+			str.append("<option value='0'>Select Exam Type</option>");
+			
+			for(Master master : maintermList){
+				str.append("<option value='"+master.getId()+"'>"+master.getName()+"</option>");
+			}
+			
+			str.append("</select>");
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			response.getWriter().write(str.toString());
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		return null;
+		
+	}
+	
+	
 	public String inputstandard() {
 
 		return "inputstandard";

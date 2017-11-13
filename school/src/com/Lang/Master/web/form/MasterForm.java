@@ -33,6 +33,7 @@ public class MasterForm {
 	private String grnum;
 	private String housedress;
 	private String actiontype = "0";
+	private String mainterm;
 	
 	
 	
@@ -57,6 +58,12 @@ public class MasterForm {
 	
 	
 	
+	public String getMainterm() {
+		return mainterm;
+	}
+	public void setMainterm(String mainterm) {
+		this.mainterm = mainterm;
+	}
 	public String getFirstname() {
 		return firstname;
 	}
