@@ -60,8 +60,13 @@ function maintermlist(classid){
  
  
 function showexamtype(mainterm){
-	 
-	 var url = "examtypeMaster?mainterm="+mainterm+" ";
+	
+	document.getElementById('hdnmainterms').value = mainterm;
+	document.getElementById('hdnclassid').value = document.getElementById('classid').value;
+	
+	document.getElementById('tfrm').submit();
+	
+	/* var url = "examtypeMaster?mainterm="+mainterm+" ";
 	 
 	 if (window.XMLHttpRequest) {
 			req = new XMLHttpRequest();
@@ -74,7 +79,7 @@ function showexamtype(mainterm){
 	    req.onreadystatechange = showexamtypeRequest;
 	    req.open("GET", url, true); 
 	              
-	    req.send(null);
+	    req.send(null);*/
  }
  
  function showexamtypeRequest(){
@@ -92,7 +97,7 @@ function showexamtype(mainterm){
  
  function showdata(){
 	 
-	 document.getElementById('hiddenid').value = document.getElementById('terms').value;
-	 
+	 //document.getElementById('hiddenid').value = document.getElementById('terms').value;
+	 document.getElementById('masterfrm').submit();
  }
  

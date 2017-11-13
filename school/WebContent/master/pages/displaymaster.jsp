@@ -30,6 +30,11 @@
 	}
 </script>
 
+<s:form action="termtestMaster" id="tfrm">
+<s:hidden name="mainterm" id="hdnmainterms"/>
+<s:hidden name="classid" id="hdnclassid"/>
+</s:form>
+
 <div style="padding-left: 4%">
 <s:form action="Master" id="masterfrm" theme="simple">
 	<div class="row" style="margin-top: 2%;">
@@ -45,21 +50,14 @@
              </select>
 		</div>
 		
+		
+		
+		
 		<div class="col-lg-2 col-md-12 col-xs-12" id="examid">
-			<select id="terms" name="terms" class="form-control" >
-                <option value="0">Select Exam Type</option>
-             </select>
-             
-             <s:hidden name="terms" id="hiddenid"></s:hidden>
-		</div>
-		
-		
-		
-		<%-- <div class="col-lg-2 col-md-12 col-xs-12" id="examid">
 			<s:select  name="terms" id="terms" list="termList"
 			listKey="id" listValue="name" headerKey="0" headerValue="Select Exam Type"
 			cssClass="form-control"/>
-		</div> --%>
+		</div>
 		<div class="col-lg-2 col-md-12 col-xs-12">
 			<s:textfield cssClass="form-control"  name="searchText" id="searchText" placeholder="Search by name and roll number"/>
 		</div>

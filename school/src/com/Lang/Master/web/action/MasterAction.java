@@ -63,6 +63,25 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 		return super.execute();
 	}
 	
+	
+	public String termtest() throws Exception{
+		Connection connection = null;
+		String mainterm = masterForm.getMainterm();
+		try {
+			connection = Connection_provider.getconnection();
+			MasterDAO masterDAO = new JDBCMasterDAO(connection);
+			
+			ArrayList<Master> maintermList = masterDAO.showtermlist(mainterm);
+			masterForm.setTermList(maintermList);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		return execute();
+	}
+	
 	public String report(){
 		
 		Connection connection = null;
