@@ -21,7 +21,7 @@ public static Connection getconnection() throws SQLException
 		//con=DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","yuvika29","Yuvika&001");
 		
 		//con=DriverManager.getConnection("jdbc:mysql://localhost:3306/pacs","root","mysql");
-		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/school","root","mysql");
+		con=DriverManager.getConnection("jdbc:mysql://localhost:3306/school","root","mydb");
 	} catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	}

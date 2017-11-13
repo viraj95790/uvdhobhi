@@ -690,6 +690,45 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 		return list;
 	}
 
+	public Master getacademicyr(String terms) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		Master master = new Master();
+		String sql = "select termid, acad_session from terms inner join master_terms on master_terms.id = terms.termid where terms.id ="+terms+" ";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				master.setTermid(rs.getString(1));
+				master.setAcademic(rs.getString(2));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return master;
+	}
+
+	public Master getclasname(String classid) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		Master master = new Master();
+		String sql = "select name from classname where id ="+classid+" ";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				master.setClassname(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return master;
+	}
+
 	
 
 

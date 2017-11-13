@@ -1,3 +1,5 @@
+<%@ taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE html>
 <%@page import="com.Lang.Master.web.action.SmsService"%>
 <%@page import="com.Lang.Master.eu.blogic.JDBCMasterDAO"%>
@@ -102,7 +104,7 @@
             <td class="tg-hgcj" colspan="20">Report Card</td>
         </tr>
         <tr>
-            <td class="tg-s6z2" colspan="20">Class : <br>Academic Session : </td>
+            <td class="tg-s6z2" colspan="20">Class :<s:property value="classname" /> <br>Academic Session :<s:property value="academic" /> </td>
         </tr>
         <tr>
             <td class="tg-031e">Student's Name</td>

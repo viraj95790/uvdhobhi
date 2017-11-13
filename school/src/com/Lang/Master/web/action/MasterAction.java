@@ -57,6 +57,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 			session.setAttribute("studentNameList", studentNameList);
 			session.setAttribute("subjectNameList", subjectNameList);
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -92,6 +93,11 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			//connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/pacs?useUnicode=true&characterEncoding=UTF-8","pranams","6qxi5x&)~XBZ");
 			MasterDAO masterDAO = new JDBCMasterDAO(connection);
 			
+            Master master = masterDAO.getacademicyr(terms);
+            Master master2 = masterDAO.getclasname(classid);
+			
+			masterForm.setAcademic(master.getAcademic());
+			masterForm.setClassname(master2.getClassname());
 			
 			session.setAttribute("sessionterms", terms);
 			session.setAttribute("sessionclassid", classid);

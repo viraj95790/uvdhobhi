@@ -59,4 +59,8 @@ public interface MasterDAO {
 
 	ArrayList<Master> showtermlist(String mainterm);
 
+	Master getacademicyr(String terms);
+
+	Master getclasname(String classid);
+
 }

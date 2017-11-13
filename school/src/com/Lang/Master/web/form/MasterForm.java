@@ -34,6 +34,9 @@ public class MasterForm {
 	private String housedress;
 	private String actiontype = "0";
 	private String mainterm;
+	private String termid;
+	private String academic;
+	
 	
 	
 	
@@ -58,6 +61,21 @@ public class MasterForm {
 	
 	
 	
+	
+	
+	
+	public String getAcademic() {
+		return academic;
+	}
+	public void setAcademic(String academic) {
+		this.academic = academic;
+	}
+	public String getTermid() {
+		return termid;
+	}
+	public void setTermid(String termid) {
+		this.termid = termid;
+	}
 	public String getMainterm() {
 		return mainterm;
 	}
