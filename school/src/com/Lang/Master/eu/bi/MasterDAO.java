@@ -63,4 +63,12 @@ public interface MasterDAO {
 
 	Master getclasname(String classid);
 
+	ArrayList<Master> getReportSubjectNameList(String terms);
+	
+	ArrayList<Master>getCoschoSubjectList(int sid,String termid,String classid, String mainterms);
+	
+	ArrayList<Master>getdmoSubjectList(int sid,String termid,String classid, String mainterms);
+	
+	
+
 }

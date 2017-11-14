@@ -1,3 +1,4 @@
+
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <!DOCTYPE html>
@@ -152,7 +153,7 @@
             <td class="tg-baqh" colspan="3">100</td>
         </tr>
        
-        <%ArrayList<Master>subjectNameList = (ArrayList<Master>)session.getAttribute("subjectNameList"); double overallmarks = 0; String smstxt = "Student Name : " + master.getName() + " , ";%>
+        <%ArrayList<Master>subjectNameList = (ArrayList<Master>)session.getAttribute("reportsubjectNameList"); double overallmarks = 0; String smstxt = "Student Name : " + master.getName() + " , ";%>
         	<% for(Master sub : subjectNameList){double totalmarks = 0;%>
         	 <tr>
 	            <td class="tg-yw4l"><%=sub.getDisplayname() %></td>
@@ -259,54 +260,23 @@
             <td class="tg-amwm" colspan="8">Term 1</td>
             <td class="tg-amwm" colspan="2">Grade</td>
         </tr>
+         <%
+         String mainterms = (String)session.getAttribute("mainterms");
+         ArrayList<Master>coscSubjectList = masterDAO.getCoschoSubjectList(studentid,sessionterms,sessionclassid, mainterms);
+         ArrayList<Master>dmSubjectList = masterDAO.getdmoSubjectList(studentid,sessionterms,sessionclassid, mainterms);
+         %>
+         
+         <% for(int c=0;c<coscSubjectList.size();c++){%>
         <tr>
-            <td class="tg-yw4l" colspan="7">Work Education</td>
-            <td class="tg-amwm" colspan="2">A</td>
-            <td class="tg-yw4l" colspan="8">Regularity &amp; Punctuality</td>
-            <td class="tg-amwm" colspan="2">A</td>
+        <% Master cm = coscSubjectList.get(c);%>
+            <td class="tg-yw4l" colspan="7"><%=cm.getDisplayname()%></td>
+            <td class="tg-amwm" colspan="2"><%=cm.getGrades()%></td>
+          <% Master dm = dmSubjectList.get(c);%>   
+            <td class="tg-yw4l" colspan="8"><%=dm.getDisplayname()%></td>
+            <td class="tg-amwm" colspan="2"><%=dm.getGrades()%></td>
         </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Art Education</td>
-            <td class="tg-amwm" colspan="2">B</td>
-            <td class="tg-yw4l" colspan="8">Sincerity</td>
-            <td class="tg-amwm" colspan="2">B</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Health &amp; Physical Education</td>
-            <td class="tg-amwm" colspan="2">C</td>
-            <td class="tg-yw4l" colspan="8">Behaviour &amp; Values</td>
-            <td class="tg-amwm" colspan="2">C</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Scientific Skills</td>
-            <td class="tg-amwm" colspan="2">A</td>
-            <td class="tg-yw4l" colspan="8">Respectfulness for Rules &amp; Regulations</td>
-            <td class="tg-amwm" colspan="2">A</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Thinking Skills</td>
-            <td class="tg-amwm" colspan="2">B</td>
-            <td class="tg-yw4l" colspan="8">Attitude Towards Teachers</td>
-            <td class="tg-amwm" colspan="2">B</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Social Skills</td>
-            <td class="tg-amwm" colspan="2">C</td>
-            <td class="tg-yw4l" colspan="8">Attitude Towards School Mates</td>
-            <td class="tg-amwm" colspan="2">C</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">YOGA / NCC</td>
-            <td class="tg-amwm" colspan="2">A</td>
-            <td class="tg-yw4l" colspan="8">Attitude Towards Society</td>
-            <td class="tg-amwm" colspan="2">A</td>
-        </tr>
-        <tr>
-            <td class="tg-yw4l" colspan="7">Sport</td>
-            <td class="tg-amwm" colspan="2">A</td>
-            <td class="tg-yw4l" colspan="8">Attitude Towards Nation</td>
-            <td class="tg-amwm" colspan="2">B</td>
-        </tr>
+        <% }%>
+       
         <tr>
             <td class="tg-yw4l" colspan="20" rowspan="2"></td>
         </tr>

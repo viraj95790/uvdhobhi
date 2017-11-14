@@ -37,6 +37,24 @@ public class MasterForm {
 	private String termid;
 	private String academic;
 	
+	private String workeduaction;
+	private String arteduction;
+	private String health_physical;
+	private String scientific;
+	private String thinking;
+	private String social;
+	private String yoga;
+	private String sport;
+	private String regularity;
+	private String sincerity;
+	private String behaviour;
+	private String respectfulness;
+	private String attitude_teacher;
+	private String  attitude_schoolmates;
+	private String  attitude_society;
+	private String  attitude_nation;
+	private String grades;
+	
 	
 	
 	
@@ -44,11 +62,12 @@ public class MasterForm {
 	
 	ArrayList<Master>termList;
 	ArrayList<Master>classNameList;
-	private String searchText;
+	private String searchText = "";
 	ArrayList<Master> getclasslist;
 	ArrayList<Master> getsubjectlist;
 	ArrayList<Master> getstudentList;
 	ArrayList<Master> studentinfoList;
+	ArrayList<Master> masterTermList;
 	
 	
 	
@@ -64,6 +83,114 @@ public class MasterForm {
 	
 	
 	
+	public String getWorkeduaction() {
+		return workeduaction;
+	}
+	public void setWorkeduaction(String workeduaction) {
+		this.workeduaction = workeduaction;
+	}
+	public String getArteduction() {
+		return arteduction;
+	}
+	public void setArteduction(String arteduction) {
+		this.arteduction = arteduction;
+	}
+	public String getHealth_physical() {
+		return health_physical;
+	}
+	public void setHealth_physical(String health_physical) {
+		this.health_physical = health_physical;
+	}
+	public String getScientific() {
+		return scientific;
+	}
+	public void setScientific(String scientific) {
+		this.scientific = scientific;
+	}
+	public String getThinking() {
+		return thinking;
+	}
+	public void setThinking(String thinking) {
+		this.thinking = thinking;
+	}
+	public String getSocial() {
+		return social;
+	}
+	public void setSocial(String social) {
+		this.social = social;
+	}
+	public String getYoga() {
+		return yoga;
+	}
+	public void setYoga(String yoga) {
+		this.yoga = yoga;
+	}
+	public String getSport() {
+		return sport;
+	}
+	public void setSport(String sport) {
+		this.sport = sport;
+	}
+	public String getRegularity() {
+		return regularity;
+	}
+	public void setRegularity(String regularity) {
+		this.regularity = regularity;
+	}
+	public String getSincerity() {
+		return sincerity;
+	}
+	public void setSincerity(String sincerity) {
+		this.sincerity = sincerity;
+	}
+	public String getBehaviour() {
+		return behaviour;
+	}
+	public void setBehaviour(String behaviour) {
+		this.behaviour = behaviour;
+	}
+	public String getRespectfulness() {
+		return respectfulness;
+	}
+	public void setRespectfulness(String respectfulness) {
+		this.respectfulness = respectfulness;
+	}
+	public String getAttitude_teacher() {
+		return attitude_teacher;
+	}
+	public void setAttitude_teacher(String attitude_teacher) {
+		this.attitude_teacher = attitude_teacher;
+	}
+	public String getAttitude_schoolmates() {
+		return attitude_schoolmates;
+	}
+	public void setAttitude_schoolmates(String attitude_schoolmates) {
+		this.attitude_schoolmates = attitude_schoolmates;
+	}
+	public String getAttitude_society() {
+		return attitude_society;
+	}
+	public void setAttitude_society(String attitude_society) {
+		this.attitude_society = attitude_society;
+	}
+	public String getAttitude_nation() {
+		return attitude_nation;
+	}
+	public void setAttitude_nation(String attitude_nation) {
+		this.attitude_nation = attitude_nation;
+	}
+	public String getGrades() {
+		return grades;
+	}
+	public void setGrades(String grades) {
+		this.grades = grades;
+	}
+	public ArrayList<Master> getMasterTermList() {
+		return masterTermList;
+	}
+	public void setMasterTermList(ArrayList<Master> masterTermList) {
+		this.masterTermList = masterTermList;
+	}
 	public String getAcademic() {
 		return academic;
 	}

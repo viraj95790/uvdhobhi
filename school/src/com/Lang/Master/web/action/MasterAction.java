@@ -46,10 +46,20 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 			ArrayList<Master>studentNameList = new ArrayList<Master>();
 			ArrayList<Master>subjectNameList = new ArrayList<Master>();
+			ArrayList<Master>reportsubjectNameList = new ArrayList<Master>();
 			
 			if(!masterForm.getClassid().equals("")){
 				studentNameList = masterDAO.getStudeneNameList(masterForm.getClassid(),masterForm.getSearchText());
 				subjectNameList = masterDAO.getSubjectNameList(masterForm.getTerms());
+				reportsubjectNameList = masterDAO.getReportSubjectNameList(masterForm.getTerms());
+				
+				ArrayList<Master> maintermList = masterDAO.showtermlist(masterForm.getMainterm());
+				masterForm.setTermList(maintermList);
+				
+				
+				ArrayList<Master> list = masterDAO.getmasterTermlist(masterForm.getClassid());
+				masterForm.setMasterTermList(list);
+				masterForm.setMainterm(masterForm.getMainterm());
 			}
 			
 			session.setAttribute("terms", masterForm.getTerms());
@@ -57,6 +67,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 			session.setAttribute("studentNameList", studentNameList);
 			session.setAttribute("subjectNameList", subjectNameList);
+			session.setAttribute("reportsubjectNameList", reportsubjectNameList);
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -68,6 +79,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 	public String termtest() throws Exception{
 		Connection connection = null;
 		String mainterm = masterForm.getMainterm();
+		String classid = masterForm.getClassid();		
 		try {
 			connection = Connection_provider.getconnection();
 			MasterDAO masterDAO = new JDBCMasterDAO(connection);
@@ -75,6 +87,10 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			ArrayList<Master> maintermList = masterDAO.showtermlist(mainterm);
 			masterForm.setTermList(maintermList);
 			
+			ArrayList<Master> list = masterDAO.getmasterTermlist(classid);
+			masterForm.setMasterTermList(list);
+			masterForm.setMainterm(mainterm);
+		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -89,6 +105,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 		try{
 			String terms = request.getParameter("terms");
 			String classid = request.getParameter("classid");
+			String mainterms = request.getParameter("mainterms");
 			connection = Connection_provider.getconnection();
 			//connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/pacs?useUnicode=true&characterEncoding=UTF-8","pranams","6qxi5x&)~XBZ");
 			MasterDAO masterDAO = new JDBCMasterDAO(connection);
@@ -101,6 +118,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 			session.setAttribute("sessionterms", terms);
 			session.setAttribute("sessionclassid", classid);
+			session.setAttribute("mainterms", mainterms);
 			
 			ArrayList<Master>termnameList = masterDAO.getTermNameList(terms);
 			session.setAttribute("termnameList", termnameList);
@@ -176,13 +194,14 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 	
 	public String mainterm() throws Exception{
 		Connection connection = null;
-		String classid = request.getParameter("classid");
+		String classid = masterForm.getClassid();
 		try {
 			connection = Connection_provider.getconnection();
 			MasterDAO masterDAO = new JDBCMasterDAO(connection);
 			
 			ArrayList<Master> maintermList = masterDAO.getmasterTermlist(classid);
-			StringBuffer str = new StringBuffer();
+			masterForm.setMasterTermList(maintermList);
+			/*StringBuffer str = new StringBuffer();
 			str.append("<select name='mainterm' id='mainterm' onchange='showexamtype(this.value)' class='form-control'>");
 			str.append("<option value='0'>Select Terms</option>");
 			
@@ -194,7 +213,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 			response.setContentType("text/html");
 			response.setHeader("Cache-Control", "no-cache");
-			response.getWriter().write(str.toString());
+			response.getWriter().write(str.toString());*/
 			
 			
 		} catch (Exception e) {
@@ -203,7 +222,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 		}finally{
 			connection.close();
 		}
-		return null;
+		return execute();
 		
 	}
 	

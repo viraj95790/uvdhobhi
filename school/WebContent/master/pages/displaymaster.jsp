@@ -33,6 +33,12 @@
 <s:form action="termtestMaster" id="tfrm">
 <s:hidden name="mainterm" id="hdnmainterms"/>
 <s:hidden name="classid" id="hdnclassid"/>
+<s:hidden name="terms" id="hdntermsid"/>
+</s:form>
+
+<s:form action="maintermMaster" id="mfrm">
+<s:hidden name="mainterm" id="hdnmainterms"/>
+<s:hidden name="classid" id="hiddenclassid1"/>
 </s:form>
 
 <div style="padding-left: 4%">
@@ -45,9 +51,19 @@
 		</div>
 		
 		<div class="col-lg-2 col-md-12 col-xs-12" id="maintermid">
-			<select id="mainterm" name="mainterm" class="form-control" onchange="showexamtype(this.value)" >
+		  <s:if test="masterTermList.size()!=0">
+			<s:select id="mainterm" name="mainterm" list="masterTermList" 
+			       listKey="id"  listValue="mainterm" headerKey="0" headerValue="Select Terms"  
+			       cssClass="form-control" onchange="showexamtype(this.value)" >
+             </s:select>
+             </s:if>
+             <s:else>
+               <select id="mainterm" name="mainterm" 
+			       class="form-control" onchange="showexamtype(this.value)" >
                 <option value="0">Select Terms</option>
              </select>
+             </s:else>
+             
 		</div>
 		
 		
@@ -65,7 +81,7 @@
 			<input type="button" value=" GO " onclick="showdata()">
 		</div>
 		<div class="col-lg-3 col-md-12 col-xs-12">
-			<a href="#" onclick="openDisplayPopup('reportMaster?classid=<s:property value="classid"/>&terms=<s:property value="terms"/>')">Creat Report For All</a>
+			<a href="#" onclick="openDisplayPopup('reportMaster?classid=<s:property value="classid"/>&terms=<s:property value="terms"/>&mainterms=<s:property value="mainterm"/>')">Creat Report For All</a>
 			| <a href="reportMaster?classid=<s:property value="classid"/>&terms=<s:property value="terms"/>">SMS to All</a>
 		</div>
 	</div>
@@ -206,7 +222,7 @@ window.onload = function(){
 	 $('.sub').each(function() { //loop through each checkbox
 		 var id = this.id;
 		 var data = id.split('~');
-		document.getElementById(id).innerHTML = '<input class="ss" type="number" id="n'+id+'" name="n'+data[0]+'">';  
+		document.getElementById(id).innerHTML = '<input class="ss" type="Text" id="n'+id+'" name="n'+data[0]+'">';  
 		
 		
 		var mid="n"+id;

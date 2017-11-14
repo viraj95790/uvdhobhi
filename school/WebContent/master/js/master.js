@@ -30,8 +30,11 @@
  
  
 function maintermlist(classid){
+	
+	document.getElementById('hiddenclassid1').value = classid;
 	 
-	 var url = "maintermMaster?classid="+classid+" ";
+	document.getElementById('mfrm').submit();
+	 /*var url = "maintermMaster?classid="+classid+" ";
 	 
 	 if (window.XMLHttpRequest) {
 			req = new XMLHttpRequest();
@@ -45,6 +48,7 @@ function maintermlist(classid){
 	    req.open("GET", url, true); 
 	              
 	    req.send(null);
+	    */
  }
  
  function maintermlistRequest(){
@@ -63,6 +67,8 @@ function showexamtype(mainterm){
 	
 	document.getElementById('hdnmainterms').value = mainterm;
 	document.getElementById('hdnclassid').value = document.getElementById('classid').value;
+	document.getElementById('hdntermsid').value = document.getElementById('terms').value;
+	
 	
 	document.getElementById('tfrm').submit();
 	
