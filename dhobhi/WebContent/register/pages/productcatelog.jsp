@@ -1,6 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
-    <script type="text/javascript" src="register/js/productCateloge.js"></script>
+    <script type="text/javascript" src=register/js/productCateloge.js"></script>
 
   
   
