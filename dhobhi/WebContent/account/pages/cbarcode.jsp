@@ -12,19 +12,20 @@
 
 <style>
 			.paddniltopase{
-				padding-top:35px;
+				padding-top:5px;
 			}
 			p {
     margin: 0 0 0px;
     text-align: center;
-    font-size: 10px;
+    font-size: 11px;
+    line-height: 12px;
 }
 .setimg{
-    width: 100%;
+  	width:500px;
     margin-left: auto;
     margin-right: auto;
         height: 40px;
-     }       
+     } 
 		</style>
     
   
@@ -48,7 +49,7 @@
 	    				
     				
     				<div class="row">
-    					<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12" style="margin-bottom: 15px;">
+    					<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12" style="margin-bottom: -25px;">
     					
     					<% for(int j=1;j<=1;j++){%>
     					<% if(t==totalBarcodeList.size())
@@ -57,11 +58,11 @@
     							}%>
     						<% Master b = totalBarcodeList.get(t);%>
     						
-    						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+    						<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
     					
     							<img  src="livedata/cbarcode/<%=b.getImageName() %>" class="img-responsive setimg" ></img>
-    							<p>Vendor : <%=loginInfo.getUserId() %></p>
-    							<p>Customer : <%=b.getName() %>  </p>	
+    							<p>V: <%=loginInfo.getUserId() %></p>
+    							<p>C: <%=b.getName() %>  </p>	
 	    						
     						</div>
     						

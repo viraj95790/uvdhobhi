@@ -11,20 +11,21 @@
     text-align: center;
     font-size: 10px;
 }
-			.paddniltopase{
+		.paddniltopase{
 				padding-top:5px;
 			}
 			p {
     margin: 0 0 0px;
     text-align: center;
-    
+    font-size: 11px;
+    line-height: 12px;
 }
 .setimg{
-    width: 100%;
+  	width:500px;
     margin-left: auto;
     margin-right: auto;
         height: 40px;
-     }       
+     } 
 		</style>
 		
 		<%if(session.getAttribute("totalBarcodeList")!=null)%><% {%>
@@ -32,23 +33,12 @@
     			
     			<%for(Master barcode : totalBarcodeList) %><% {%>
     			<div class="row">
-    				<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12" style="margin-bottom: 0px;">
-    					<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+    				<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12" style="margin-bottom: -25px;">
+    					<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
 			    			<p><%=barcode.getName() %></p>	
 	    				</div>
-		    			<%-- <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
-			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
-			    			<p><%=barcode.getName() %></p>	
-	    				</div>
-		    			<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
-			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
-			    			<p><%=barcode.getName() %></p>	
-	    				</div>
-		    			<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
-			    			<img src="livedata/vbarcode/<%=barcode.getImageName() %>" class="img-responsive setimg"></img>
-			    			<p><%=barcode.getName() %></p>	
-	    				</div> --%>
+		    			
     				</div>
     			</div>
     			
