@@ -60,6 +60,9 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 				ArrayList<Master> list = masterDAO.getmasterTermlist(masterForm.getClassid());
 				masterForm.setMasterTermList(list);
 				masterForm.setMainterm(masterForm.getMainterm());
+				
+				
+				
 			}
 			
 			session.setAttribute("terms", masterForm.getTerms());
@@ -112,6 +115,9 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
             Master master = masterDAO.getacademicyr(terms);
             Master master2 = masterDAO.getclasname(classid);
+            
+            Master master3 = masterDAO.getresultdate(classid);
+			masterForm.setResult_date(master3.getResult_date());
 			
 			masterForm.setAcademic(master.getAcademic());
 			masterForm.setClassname(master2.getClassname());
@@ -274,6 +280,8 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			Master master = new Master();
 
 			master.setClassname(masterForm.getClassname());
+			master.setResult_date(masterForm.getResult_date());
+			
 
 			int result = masterDAO.insertclasname(master);
 
@@ -318,6 +326,7 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			
 	        masterForm.setClassname(master.getClassname());
 	       	masterForm.setId(master.getId());
+	       	masterForm.setResult_date(master.getResult_date());
 			
 
 		} catch (Exception e) {
@@ -327,6 +336,30 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			connection.close();
 		}
 		return "editstandard";
+	}
+	
+	public String updatestandard() throws Exception{
+		Connection connection = null;
+		try {
+			connection = Connection_provider.getconnection();
+			MasterDAO masterDAO = new JDBCMasterDAO(connection);
+			Master master = new Master();
+
+			master.setId(masterForm.getId());
+			master.setClassname(masterForm.getClassname());
+			master.setResult_date(masterForm.getResult_date());
+			
+
+			int result = masterDAO.updateclasname(master);
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		return "updatestandard";
 	}
 	
 	
@@ -568,6 +601,26 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 			connection = Connection_provider.getconnection();
 			MasterDAO masterDAO = new JDBCMasterDAO(connection);
 			int result = masterDAO.deletestudent(selectedid);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+		
+		return inputstudentinfo();
+		
+	}
+	
+	public String deletestandard() throws Exception{
+		Connection connection = null;
+		String selectedid = request.getParameter("selectedid");
+		try {
+			
+			connection = Connection_provider.getconnection();
+			MasterDAO masterDAO = new JDBCMasterDAO(connection);
+			int result = masterDAO.deletestandard(selectedid);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

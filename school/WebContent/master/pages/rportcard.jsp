@@ -215,7 +215,12 @@
             	
             	SmsService s = new SmsService();
             	smstxt = smstxt + " Percentage : " + per;
-            	s.sendSms(smstxt, master.getMob());
+            	String temp[] = master.getMob().split(",");
+        		for(int i=0;i<temp.length;i++){
+        			s.sendSms(smstxt, master.getMob());
+        		}
+            	
+            
             %>
             <td class="tg-baqh" colspan="3"><%=per %></td>
             <td class="tg-yw4l" colspan="2"></td>
@@ -289,7 +294,7 @@
         </tr>
         <tr></tr>
         <tr>
-            <td class="tg-baqh" colspan="7" rowspan="2">Date : 21/09/2017</td>
+            <td class="tg-baqh" colspan="7" rowspan="2">Date :<s:property value="result_date"/></td>
             <td class="tg-baqh" colspan="7" rowspan="2">Class Teacher</td>
             <td class="tg-baqh" colspan="6" rowspan="2">Principal</td>
         </tr>

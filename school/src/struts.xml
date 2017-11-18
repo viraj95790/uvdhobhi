@@ -56,6 +56,8 @@
 			<result name="editstudent" type="tiles">editStudent</result>
 			<result name="updatestudent" type="redirect">inputstudentinfoMaster</result>
 			<result name="report" type="tiles">report</result>
+			<result name="editstandard" type="tiles">editClass</result>
+			<result name="updatestandard" type="redirect">displaystandardMaster</result>
 
 		</action>
 

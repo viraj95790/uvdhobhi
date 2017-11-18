@@ -48,6 +48,7 @@ public class Master {
 	private String  attitude_society;
 	private String  attitude_nation;
 	private String grades;
+	private String result_date;
 	
 	
 	
@@ -63,6 +64,12 @@ public class Master {
 	
 	
 	
+	public String getResult_date() {
+		return result_date;
+	}
+	public void setResult_date(String result_date) {
+		this.result_date = result_date;
+	}
 	public String getGrades() {
 		return grades;
 	}

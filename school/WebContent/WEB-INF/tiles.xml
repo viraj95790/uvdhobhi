@@ -81,6 +81,10 @@
 	<definition name="editStudent" extends="baseLayout">
 		<put-attribute name="body" value="/master/pages/editstudent.jsp" />
 	</definition>
+	
+	<definition name="editClass" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/editclass.jsp" />
+	</definition>
 
 
 </tiles-definitions>

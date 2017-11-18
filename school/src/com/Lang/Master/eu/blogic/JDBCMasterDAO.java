@@ -367,10 +367,11 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		int result = 0;
-		String sql = "insert into classname (name) values(?)";
+		String sql = "insert into classname (name, result_date) values(?,?)";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, master.getClassname());
+			preparedStatement.setString(2, master.getResult_date());
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
@@ -384,7 +385,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master> list = new ArrayList<Master>();
-		String sql = "select id, name from classname";
+		String sql = "select id, name, result_date from classname";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -393,6 +394,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 				Master master = new Master();
 				master.setId(rs.getInt(1));
 				master.setClassname(rs.getString(2));
+				master.setResult_date(rs.getString(3));
 
 				list.add(master);
 			}
@@ -460,8 +462,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 			preparedStatement.setString(3, master.getFirstname());
 			preparedStatement.setString(4, master.getFathername());
 			preparedStatement.setString(5, master.getLastname());
-			preparedStatement.setString(6,
-					master.getFirstname() + " " + master.getLastname());
+			preparedStatement.setString(6, master.getFirstname() + " " + master.getLastname());
 			preparedStatement.setString(7, master.getMothername());
 			preparedStatement.setString(8, master.getDob());
 			preparedStatement.setString(9, master.getCast());
@@ -572,8 +573,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		Master master = new Master();
-		String sql = "select id, name from classname where id='" + selectedid
-				+ "' ";
+		String sql = "select id, name, result_date from classname where id="+selectedid+" ";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -581,6 +581,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 
 				master.setId(rs.getInt(1));
 				master.setClassname(rs.getString(2));
+				master.setResult_date(rs.getString(3));
 			}
 
 		} catch (Exception e) {
@@ -604,8 +605,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 			preparedStatement.setString(3, master.getFirstname());
 			preparedStatement.setString(4, master.getFathername());
 			preparedStatement.setString(5, master.getLastname());
-			preparedStatement.setString(6,
-					master.getFirstname() + " " + master.getLastname());
+			preparedStatement.setString(6, master.getFirstname() + " " + master.getLastname());
 			preparedStatement.setString(7, master.getMothername());
 			preparedStatement.setString(8, master.getDob());
 			preparedStatement.setString(9, master.getCast());
@@ -653,8 +653,7 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master> list = new ArrayList<Master>();
-		String sql = "select id, name from master_terms where classid ="
-				+ classid + " ";
+		String sql = "select id, name from master_terms where classid ="+ classid + " ";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -864,6 +863,63 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public Master getresultdate(String classid) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		Master master = new Master();
+		String sql = "select result_date from classname where id ="+classid+" ";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				master.setResult_date(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return master;
+	}
+
+	public int updateclasname(Master master) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "update classname set name=?, result_date=? where id=? ";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, master.getClassname());
+			preparedStatement.setString(2, master.getResult_date());
+			preparedStatement.setInt(3, master.getId());
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int deletestandard(String selectedid) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "delete from classname where id="+ selectedid +"  ";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

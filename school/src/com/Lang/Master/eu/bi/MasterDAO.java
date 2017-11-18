@@ -68,6 +68,12 @@ public interface MasterDAO {
 	ArrayList<Master>getCoschoSubjectList(int sid,String termid,String classid, String mainterms);
 	
 	ArrayList<Master>getdmoSubjectList(int sid,String termid,String classid, String mainterms);
+
+	Master getresultdate(String classid);
+
+	int updateclasname(Master master);
+
+	int deletestandard(String selectedid);
 	
 	
 
