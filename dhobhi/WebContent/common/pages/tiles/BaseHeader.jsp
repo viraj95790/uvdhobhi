@@ -64,8 +64,8 @@
                            --><%if(session.getAttribute("logininfo")==null){ %>
                                 	<%LoginInfo loginInfo = LoginHelper.getLoginInfo(request); %>
                            
-                            <li class="dropdown">
-                              <%--  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Login</span> <span class="caret"></span></a> --%>
+                          <%--   <li class="dropdown">
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Login</span> <span class="caret"></span></a>
                                 <ul id="login-dp" class="dropdown-menu setpadlogin">
                                 	
                                     <li>
@@ -99,7 +99,11 @@
                                    
                                 </ul>
 
-                            </li>
+                            </li> --%>
+                            
+                                <li>
+                             		<a href="inputLogin">Login</a>
+                        		 </li>
                             
                              <%}else{ %>
                                	 <li>

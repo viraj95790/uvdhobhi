@@ -1,1 +1,1 @@
-<META HTTP-EQUIV="Refresh" CONTENT="0;URL=inputLogin">
+<META HTTP-EQUIV="Refresh" CONTENT="0;URL=Default">
