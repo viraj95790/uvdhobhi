@@ -85,6 +85,26 @@
 	<definition name="editClass" extends="baseLayout">
 		<put-attribute name="body" value="/master/pages/editclass.jsp" />
 	</definition>
+	
+	<definition name="leavinInfo" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/leavininfo.jsp" />
+	</definition>
+	
+	<definition name="display_leavinginfo" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/display_leavinginfo.jsp" />
+	</definition>
+	
+	<definition name="generate_leaving" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/generateLeaving.jsp" />
+	</definition>
+	
+	<definition name="generate_character" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/charactercertificate.jsp" />
+	</definition>
+	
+	<definition name="edit_leaving" extends="baseLayout">
+		<put-attribute name="body" value="/master/pages/editLeavinginfo.jsp" />
+	</definition>
 
 
 </tiles-definitions>

@@ -14,6 +14,20 @@ function openDisplayPopup(URL) {
 
 
 
+function confirmedDelete(){
+
+	var r=confirm("Are you sure you want to delete this entry");
+	if (r==true)
+	  {
+	  return true;
+	  }
+	else
+	  {
+	  return false;
+	  }
+
+	} 
+
 
 
 function openBarcodePopup(){

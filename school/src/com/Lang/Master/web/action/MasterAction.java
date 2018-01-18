@@ -634,7 +634,17 @@ public class MasterAction extends BaseAction implements Preparable, ModelDriven<
 	}
 
 	
+	public String addleavinginfo(){
+		
+		return "addleavinginfo";
+		
+	}
 	
+   public String displayleavin(){
+		
+		return "displayleavin";
+		
+	}
 
 	public void prepare() throws Exception {
 		Connection connection = null;

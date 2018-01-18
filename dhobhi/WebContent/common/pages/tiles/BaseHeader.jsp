@@ -64,7 +64,48 @@
                            --><%if(session.getAttribute("logininfo")==null){ %>
                                 	<%LoginInfo loginInfo = LoginHelper.getLoginInfo(request); %>
                            
+<<<<<<< HEAD
                           <li>
+=======
+                          <%--   <li class="dropdown">
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Login</span> <span class="caret"></span></a>
+                                <ul id="login-dp" class="dropdown-menu setpadlogin">
+                                	
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                Login via
+                                                <div class="social-buttons">
+                                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                                </div>
+                                                or
+                                                 <s:form action="Login" theme="simple">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                        <s:textfield name="email"  cssClass="form-control" id="email" placeholder="Email address" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                        <s:password name="password" cssClass="form-control" id="password" placeholder="Password" />
+                                                        <div class="help-block text-right"><a href="forgetpwd.html">Forget the password ?</a></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary btn-block" onclick="location.href = 'Afterlogin.html';">Sign in</button>
+                                                    </div>
+
+                                               </s:form>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                   
+                                </ul>
+
+                            </li> --%>
+                            
+                                <li>
+>>>>>>> branch 'master' of https://github.com/viraj95790/uvdhobhi
                              		<a href="inputLogin">Login</a>
                         		 </li>
                             

@@ -31,7 +31,7 @@
 		<action name="*Login" method="{1}"
 			class="com.pacs.main.web.action.LoginAction">
 			<result name="input" type="tiles">inputlogin</result>
-			<result name="success" type="redirect">Master</result>
+			<result name="success" type="redirect">Certificate</result>
 
 		</action>
 
@@ -61,7 +61,18 @@
 
 		</action>
 
-
+			
+	     <action name="*Certificate" method="{1}"
+			class="com.Lang.Master.web.action.CertificateAction">
+			<result name="success" type="tiles">display_leavinginfo</result>
+			<result name="input" type="tiles">leavinInfo</result>
+			<result name="addleavinginfo" type="redirect">Certificate</result>
+			<result name="generateleaving" type="tiles">generate_leaving</result>
+			<result name="generatecharacter" type="tiles">generate_character</result>
+			<result name="editleaving" type="tiles">edit_leaving</result>
+			<result name="update" type="redirect">Certificate</result>
+			
+		</action>
 
 
 
