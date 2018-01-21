@@ -22,4 +22,9 @@ public interface RegisterDAO {
 
 	int updateclientstatus(String selectedid, String status);
 
+	boolean checkEmailIdExist(String email);
+
+	int saveGmailFBInfo(String email, String name, String string,
+			String string2, String string3);
+
 }

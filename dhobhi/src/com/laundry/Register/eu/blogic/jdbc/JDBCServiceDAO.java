@@ -608,5 +608,24 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return list;
 	}
 
+	public String checkEmailIdExist(String email) {
+		PreparedStatement preparedStatement = null;
+		String reslt = "false";
+		String sql = "SELECT * FROM registration where email = '"+email+"' ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next()){
+				reslt = "true";
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return reslt;
+	}
+
 	
 }

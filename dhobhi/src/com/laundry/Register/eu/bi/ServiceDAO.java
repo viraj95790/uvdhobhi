@@ -45,5 +45,7 @@ public interface ServiceDAO {
 
 	ArrayList<Master> getcustomerinfo(int id);
 
+	String checkEmailIdExist(String email);
+
 
 }

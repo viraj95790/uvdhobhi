@@ -1,8 +1,12 @@
+<%@page import="com.laundry.main.web.common.helper.LoginHelper"%>
+<%@page import="com.laundry.main.web.common.helper.LoginInfo"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
 <script type="text/javascript" src="register/js/productCateloge.js"></script>
 <script src="popupdialog/dialog/js/jquery-1.10.2.js"
 	type="text/javascript"></script>
+	
+	<%LoginInfo loginInfo = LoginHelper.getLoginInfo(request);%>
 
 <script>
 	$(document).ready(function() {
@@ -54,13 +58,24 @@
 						cssClass="form-control" theme="simple"></s:textfield>
 	                   </div>
 	                   
+	                   <% if(loginInfo.getUserType()==2){%>
 	                    <div class="col-lg-2 col-sm-1 col-dm-1">
+							<div>
+								<s:select disabled="true" cssClass="form-control" id="vendorname" name="vendorname"
+									list="vendorList" listKey="id" listValue="vendorname" headerKey="0"
+									headerValue="Select Vendor" onchange="getcustomerlist()"></s:select>
+							</div>
+						</div> 
+						<% }else{%>
+							 <div class="col-lg-2 col-sm-1 col-dm-1">
 							<div>
 								<s:select cssClass="form-control" id="vendorname" name="vendorname"
 									list="vendorList" listKey="id" listValue="vendorname" headerKey="0"
 									headerValue="Select Vendor" onchange="getcustomerlist()"></s:select>
 							</div>
 						</div> 
+						
+						<% }%>
 					
 						<div class="col-lg-2 col-sm-1 col-dm-1">
 							<div>

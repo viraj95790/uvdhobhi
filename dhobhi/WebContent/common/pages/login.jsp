@@ -1,6 +1,8 @@
 <%@ taglib uri="/struts-tags"  prefix="s"%>
 <!DOCTYPE html>
 <html lang="en-US">
+ <script src="https://apis.google.com/js/platform.js" async defer></script>
+   <meta name="google-signin-client_id" content="607113469426-voa66djjm1ng4essa99vevg3pbu7i4q0.apps.googleusercontent.com">
 <body>
    
     <div class="container setpaddregst">
@@ -21,7 +23,37 @@
                         <label>Password</label>
                         <s:password name="password" cssClass="form-control" id="password" placeholder="Enter Your Email" title="Email ID" tabindex="1"/>
                     </div>
-                    <div class="text-right">
+                   
+                    
+                     <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
+   <div style="display: none;">
+      <img id="myImg"><br>
+      <p id="name"></p>
+      <div id="status"></div>
+ </div>
+   <script type="text/javascript">
+      function onSignIn(googleUser) {
+      // window.location.href='success.jsp';
+      var profile = googleUser.getBasicProfile();
+      var imagurl=profile.getImageUrl();
+      var name=profile.getName();
+      var email=profile.getEmail();
+      document.getElementById("myImg").src = imagurl;
+      document.getElementById("name").innerHTML = name;
+      document.getElementById("myP").style.visibility = "hidden";
+      // document.getElementById("status").innerHTML = 'Welcome <a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
+    		   
+       window.location.href='Gmaillogin?email='+email+'&name='+name+'';
+   }
+   </script>
+   <!--  <button onclick="myFunction()">Sign Out</button>  -->
+   <script>
+      function myFunction() {
+      gapi.auth2.getAuthInstance().disconnect();
+      location.reload();
+   }
+   </script>
+                     <div class="text-right">
                         <input type="submit" class="btn btn-primary" value="Submit">
                     </div>
                     <div class="text-left">

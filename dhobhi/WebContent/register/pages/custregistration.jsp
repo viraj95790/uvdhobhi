@@ -1,3 +1,5 @@
+
+
   <%@ taglib uri="/struts-tags" prefix="s" %>
   
 
@@ -57,7 +59,8 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <s:textfield id="email" name="email" title="Email ID" placeholder="Email ID" cssClass="form-control"/>
+                                        <s:textfield onchange="checkEmailExist(this.value)" id="email" name="email" title="Email ID" placeholder="Email ID" cssClass="form-control"/>
+                                        <label  style="display: none; color: red;" id="chkemailerror">Email already exist</label>
                                     </div>
                                 </div>
                             </div>

@@ -28,6 +28,12 @@
 			<result name="homepage" type="tiles">homepage</result>
 			<result name="success" type="redirect">Default</result>
 			<result name="adminpage" type="redirect">Registration</result>
+			<result name="displaycartservice" type="redirect">displaycartService</result>
+		</action>
+		
+				
+		<action name="*Gmaillogin" method="{1}" class="com.laundry.main.web.action.GmailloginAction">
+			<result name="success" type="redirect">Default</result>
 		</action>
 		
 		<action name="*Logout" method="{1}" class="com.laundry.main.web.action.LogoutAction">

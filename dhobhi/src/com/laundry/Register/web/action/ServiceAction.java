@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
@@ -65,6 +67,32 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		}
 		return "success";
 		
+	}
+	
+	public String email(){
+		String email = request.getParameter("email");
+		System.out.println("hello");
+		
+		String str = "false";
+		
+		Connection connection = null;
+		try {
+			connection = Connection_provider.getconnection();
+			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			str = serviceDAO.checkEmailIdExist(email);
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			response.getWriter().write(str);
+			
+			
+		}catch(Exception e){
+			
+		}
+		
+		
+		return null;
 	}
 	
 	public String vendor(){
@@ -426,6 +454,8 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		int vendorid = Integer.parseInt(vendor);
 		String customerid = masterForm.getName();
 		
+	
+		
 		
 		String fromDate = masterForm.getFromdate();
 		String toDate = masterForm.getTodate();	
@@ -459,9 +489,17 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			connection = Connection_provider.getconnection();
 			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
 			
+					
+			//for vendor
+			if(loginInfo.getUserType()==2){
+				masterForm.setVendorname(Integer.toString(loginInfo.getId()));
+				vendorid = loginInfo.getId();
+			}
+			
 			/*int vendorid = loginInfo.getId();*/
 			ArrayList<Master> list = serviceDAO.getcartdata(customerid,vendorid,fromDate,toDate);
 			masterForm.setCartitemList(list);
+
 			
 			ArrayList<Master> clienlist = serviceDAO.getcustomerlist(vendorid);
 			masterForm.setCustomerList(clienlist);

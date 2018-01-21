@@ -1,7 +1,8 @@
  <%@page import="com.laundry.main.web.common.helper.LoginHelper"%>
 <%@page import="com.laundry.main.web.common.helper.LoginInfo"%>
 <%@taglib uri="/struts-tags"  prefix="s"%>  
-    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+   <meta name="google-signin-client_id" content="607113469426-voa66djjm1ng4essa99vevg3pbu7i4q0.apps.googleusercontent.com">
     <style>
     	.logoset{
     		width: 16%;
@@ -108,7 +109,7 @@
                             
                              <%}else{ %>
                                	 <li>
-                             		<a href="Logout">Logout</a>
+                             		<a href="Logout" onclick="myFunction()">Logout</a>
                         		 </li>
                                 
                               <%} %>
@@ -124,3 +125,38 @@
             </div>
         </div>
     </div>
+    
+    
+     <div style="display: none;">
+      <img id="myImg"><br>
+      <p id="name"></p>
+      <div id="status"></div>
+ </div>
+   <script type="text/javascript">
+      function onSignIn(googleUser) {
+      // window.location.href='success.jsp';
+      var profile = googleUser.getBasicProfile();
+      var imagurl=profile.getImageUrl();
+      var name=profile.getName();
+      var email=profile.getEmail();
+      document.getElementById("myImg").src = imagurl;
+      document.getElementById("name").innerHTML = name;
+      document.getElementById("myP").style.visibility = "hidden";
+      // document.getElementById("status").innerHTML = 'Welcome <a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
+    		   
+      // window.location.href='success.jsp?email='+email+'&name='+name+'';
+   }
+   </script>
+   <!--  <button onclick="myFunction()">Sign Out</button>  -->
+   <script>
+   
+   window.onload =function(){
+	   gapi.load('auth2', function() {
+	        gapi.auth2.init();
+	      });
+   }
+      function myFunction() {
+      gapi.auth2.getAuthInstance().disconnect();
+      //location.reload();
+   }
+   </script>

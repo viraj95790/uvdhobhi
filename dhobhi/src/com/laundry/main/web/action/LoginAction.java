@@ -87,7 +87,7 @@ public class LoginAction extends BaseAction implements ModelDriven<RegisterForm>
 		LoginHelper.saveLoginInfo(request, loginInfo);
 		
 		if(register.getUsertype().equals("2")){
-			return "adminpage";
+			return "displaycartservice";
 		}
 		
 		if(register.getUsertype().equals("0")){
