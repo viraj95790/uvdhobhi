@@ -64,9 +64,7 @@
                            --><%if(session.getAttribute("logininfo")==null){ %>
                                 	<%LoginInfo loginInfo = LoginHelper.getLoginInfo(request); %>
                            
-<<<<<<< HEAD
                           <li>
-=======
                           <%--   <li class="dropdown">
                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Login</span> <span class="caret"></span></a>
                                 <ul id="login-dp" class="dropdown-menu setpadlogin">
@@ -105,7 +103,6 @@
                             </li> --%>
                             
                                 <li>
->>>>>>> branch 'master' of https://github.com/viraj95790/uvdhobhi
                              		<a href="inputLogin">Login</a>
                         		 </li>
                             

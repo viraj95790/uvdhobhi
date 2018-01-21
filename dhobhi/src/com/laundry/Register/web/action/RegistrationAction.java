@@ -78,10 +78,18 @@ public class RegistrationAction extends BaseAction implements ModelDriven<Regist
     		register.setLandmark(registerForm.getLandmark());
     		register.setPassword(registerForm.getPassword());
     		register.setPincode(registerForm.getPincode());
-    		register.setCustomer_type(registerForm.getCustomer_type());
     		register.setUsertype(registerForm.getCustomer_type());
     		register.setModified_date(registerForm.getModified_date());
     		register.setPostname(registerForm.getPostname());
+    		
+    		if(loginInfo.getId()== 3){
+    			register.setCustomer_type(registerForm.getCustomer_type());
+    			register.setUsertype(registerForm.getCustomer_type());
+    		}
+    		else{
+    			register.setCustomer_type("1");
+    			register.setUsertype("1");
+    		}
     		
     		register.setVendorid(0);
     		if(verifyLogin(request)){
