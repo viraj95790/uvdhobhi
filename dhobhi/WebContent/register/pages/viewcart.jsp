@@ -6,6 +6,7 @@
     </section>
     <!-- End Services 3 columns 1 row -->
 
+   <script src="register/js/productCateloge.js" ></script>
    
 <style>
 .bactopset {
@@ -29,7 +30,7 @@
                     </div>
                     </s:iterator>
                     <div class="paypanel text-left martop25piccart">
-                        <h1><small>step #2</small>Pickup &amp; Delivery Time &nbsp;&nbsp;<a data-toggle="collapse" href="#editpickup" aria-expanded="false" aria-controls="editpickup" class="collapsed"><i class="fa fa-pencil editicon"></i></a></h1>
+                        <h1><small>step #2</small>Pickup &amp; Delivery Time &nbsp;&nbsp;<a data-toggle="collapse" href="#editpickup" aria-expanded="false" aria-controls="editpickup" class="collapsed"><i class="fa fa-pencil editicon" onclick="userinfo()"></i></a></h1>
                         <div class="collapse" id="editpickup" aria-expanded="false" style="height: 0px;">
                             <div class="col-sm-12 paddingnil editpickback">
                                 <label for="email">Pickup</label>
@@ -64,6 +65,134 @@
                         <p class="cartfont"> Date :<s:property value="deliver_date"/></p>
                         <p class="cartfont"> Time :<s:property value="dtime"/></p>
                     </div>
+                    
+                    
+                    
+                   <!--  updatecode -->
+                    
+<!-- Add new ot charge popup -->
+  <div class="modal fade" id="newotchargepopupid" tabindex="-1"
+   role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">
+       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">Add New Procedure
+       Charge</h4>
+     </div>
+     <div class="modal-body">
+      <div class="row">
+       <div class="col-lg-3">
+        <label>OT Charge</label>
+       </div>
+       <div class="col-lg-9">
+
+        <input type="number" id="potcharge" name="potcharge"
+         class="form-control showToolTip"
+         onblur="setPuresevaExistingClientData()"
+         placeholder="Enter OT Charge" title="Enter OT Charge"
+         data-toggle="tooltip " />
+       </div>
+      </div>
+      <br>
+      <div class="row">
+       <div class="col-lg-3">
+        <label>Anesthesia Charge</label>
+       </div>
+       <div class="col-lg-9">
+
+        <input type="number" id="panetcharge" name="panetcharge"
+         class="form-control showToolTip"
+         onblur="setPuresevaExistingClientData()"
+         placeholder="Enter Anesthesia  Charge"
+         title="Enter Anesthesia Charge" data-toggle="tooltip " />
+       </div>
+      </div>
+      <br>
+
+      <div class="row">
+       <div class="col-lg-3">
+        <label>Surgeon Charge</label>
+       </div>
+       <div class="col-lg-9">
+
+        <input type="number" id="psurcharge" name="psurcharge"
+         class="form-control showToolTip"
+         onblur="setPuresevaExistingClientData()"
+         placeholder="Enter Surgeon Charge" title="Enter Surgeon Charge"
+         data-toggle="tooltip " />
+       </div>
+      </div>
+      <br>
+
+      <div class="row">
+       <div class="col-lg-3">
+        <label>Surgical Item Charge</label>
+       </div>
+       <div class="col-lg-9">
+
+        <input type="number" id="sic" name="sic"
+         class="form-control showToolTip"
+         onblur="setPuresevaExistingClientData()"
+         placeholder="Enter Surgical Item Charge"
+         title="Enter Surgical Item Charge" data-toggle="tooltip " />
+       </div>
+      </div>
+      <br>
+
+
+      <div class="row">
+       <div class="col-lg-6">
+        <div class="col-lg-3">
+         <label>Anesthesia Doctor</label>
+        </div>
+        <div class="col-lg-9">
+
+         <input type="text" onchange="saveAnisthesiaDoctor(this.value)"
+          id="anidoctor" name="anidoctor"
+          class="form-control showToolTip"
+          onblur="setPuresevaExistingClientData()"
+          placeholder="Enter Anesthesia Doctor Name"
+          title="Enter Anesthesia Doctor Name" data-toggle="tooltip " />
+        </div>
+       </div>
+
+       <div class="col-lg-6">
+        <div class="col-lg-3">
+         <label>Fees</label>
+        </div>
+        <div class="col-lg-9">
+
+         <input type="number" id="anifees" name="anifees"
+          class="form-control showToolTip"
+          placeholder="Enter Anesthesia Doctor Fees"
+          title="Enter Anesthesia Doctor Fees" data-toggle="tooltip " />
+        </div>
+       </div>
+
+      </div>
+      <br>
+
+     </div>
+     <div class="modal-footer">
+
+      <button type="button" class="btn btn-primary"
+       onclick="saveproceduralOtCharge();" data-dismiss="modal">Save</button>
+      <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+     </div>
+    </div>
+   </div>
+  </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1"></div>
                 <div class="col-lg-6 col-sm-6 col-md-6 formregn">

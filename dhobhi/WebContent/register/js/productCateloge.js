@@ -169,3 +169,9 @@ function openVbarcode(action){
 
 	document.getElementById('vbarcodefrm').submit();
 }
+
+
+ function userinfo(){
+	 
+	 $( "#newotchargepopupid" ).modal( "show" );
+ }

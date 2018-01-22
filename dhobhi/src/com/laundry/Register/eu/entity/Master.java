@@ -44,6 +44,8 @@ public class Master {
 	
 	private ArrayList<Cart> productlist;
 	
+	private String productid;
+	
 	
 	private String imageName;
 	
@@ -56,6 +58,16 @@ public class Master {
 	
 	
 	
+	
+	
+	public String getProductid() {
+		return productid;
+	}
+
+	public void setProductid(String productid) {
+		this.productid = productid;
+	}
+
 	public String getMobile() {
 		return mobile;
 	}

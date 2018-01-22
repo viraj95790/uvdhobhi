@@ -73,11 +73,17 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return list;
 	}
 
-	public ArrayList<Master> getsubitemList(String selectedid, int id) {
+	public ArrayList<Master> getsubitemList(String selectedid, int id, int userType) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master> list = new ArrayList<Master>();
-		String sql = "select id, name from l_subitem where itemid='"+selectedid+"' and customerid="+id+"  ";
+		String sql = "";
+		if(userType == 3){
+			 sql = "select id, name from l_subitem where itemid='"+selectedid+"' and customerid="+id+"  ";
+		}
+		else{
+			 sql = "select id, name from l_subitem where itemid='"+selectedid+"' and customerid = 0  ";
+		}
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();

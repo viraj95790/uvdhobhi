@@ -357,6 +357,9 @@ public class JDBCMasterDAO extends JDBCBaseDAO implements MasterDAO {
 					list.add(master);
 				}
 				
+				Master master2 = new Master();
+				master2.setName("other");
+				
 				
 			}catch(Exception e){
 				e.printStackTrace();

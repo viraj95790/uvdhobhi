@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
@@ -230,7 +229,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			connection = Connection_provider.getconnection();
 			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
 			
-			ArrayList<Master> subitemList = serviceDAO.getsubitemList(selectedid, loginInfo.getId());
+			ArrayList<Master> subitemList = serviceDAO.getsubitemList(selectedid, loginInfo.getId(), loginInfo.getUserType());
 			
 			StringBuffer str = new StringBuffer();
 			str.append("<select class='form-control' name='subitem' id='subitem' onchange='setpriceAjax(this.value)' >");
