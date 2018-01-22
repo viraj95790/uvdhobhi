@@ -3,6 +3,7 @@ package com.laundry.Account.web.form;
 import java.util.ArrayList;
 
 import com.laundry.Account.eu.entity.Account;
+import com.laundry.Register.eu.entity.Cart;
 import com.laundry.Register.eu.entity.Master;
 
 public class AccountForm {
@@ -70,22 +71,30 @@ public class AccountForm {
 	
 	private ArrayList<Account> chargeinvList;
 	private ArrayList<Master> customerList;
-	private ArrayList<Account> masterProductList;
+	/*private ArrayList<Account> masterProductList;*/
 	private ArrayList<Account> paymentReportList;
 	ArrayList<Master>vendorList;
 	
 	
-	
-	
-	
-
+	private ArrayList<Cart> masterProductList;
 	
 	
 
 	
 	
+
 	
 	
+	
+	
+	public ArrayList<Cart> getMasterProductList() {
+		return masterProductList;
+	}
+
+	public void setMasterProductList(ArrayList<Cart> masterProductList) {
+		this.masterProductList = masterProductList;
+	}
+
 	public String getOrderamount() {
 		return orderamount;
 	}
@@ -286,13 +295,7 @@ public class AccountForm {
 		this.date = date;
 	}
 
-	public ArrayList<Account> getMasterProductList() {
-		return masterProductList;
-	}
-
-	public void setMasterProductList(ArrayList<Account> masterProductList) {
-		this.masterProductList = masterProductList;
-	}
+	
 
 	public String getName() {
 		return name;

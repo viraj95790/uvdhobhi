@@ -178,7 +178,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 	}
 
 
-	public ArrayList<Account> getproductmasterlist(String selectedid) {
+	/*public ArrayList<Account> getproductmasterlist(String selectedid) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Account> list = new ArrayList<Account>();
@@ -217,19 +217,19 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 		}
 		
 		return list;
-	}
+	}*/
 
 
-	private ArrayList<Cart> getitemproductlist(String selectedid, String item) {
+	public ArrayList<Cart> getitemproductlist(String selectedid, String item) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Cart> list = new ArrayList<Cart>();
 		double totalcgstvalue = 0, totalsgstvalue = 0, totaldebit=0, orderamt=0;
 		
-		String sql = "SELECT  cartcharge_invoice.customerid, cartcharge_invoice.date, cartcharge_invoice.debit, discount, subitem, quantity, price"
+		String sql = "SELECT  cartcharge_invoice.customerid, cartcharge_invoice.date, cartcharge_invoice.debit, discount, subitem, quantity, price, cart_product.item"
 				     +" from cartcharge_invoice inner join cartcharge_product on cartcharge_product.charge_invoiceid = cartcharge_invoice.id"
 				      +" inner join cart_invoice on cart_invoice.id = cartcharge_product.invoiceid inner join cart_product on cart_invoice.id = cart_product.invoiceid"
-				     +" where cartcharge_invoice.id ='"+selectedid+"' and cart_product.item ='"+item+"'";
+				     +" where cartcharge_invoice.id ='"+selectedid+"' ";
 		try{
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -246,6 +246,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				cart.setSubitem(rs.getString(5));
 				cart.setQty(rs.getString(6));
 				cart.setPrice(rs.getString(7));
+				cart.setItem(rs.getString(8));
 				
 				double total = rs.getDouble(7) * rs.getInt(6);
 				cart.setTotalamount(DateTimeUtils.changeFormat(total));
@@ -253,8 +254,10 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				orderamt = orderamt+total;
 				cart.setOrderamount(DateTimeUtils.changeFormat(orderamt));
 				
-				double cgst = getcgst(cart.getSubitem(), item);
-				double sgst = getsgst(cart.getSubitem(), item);
+				double cgst = getcgst(cart.getSubitem(), cart.getItem());
+				cart.setCgst(DateTimeUtils.changeFormat(cgst));
+				double sgst = getsgst(cart.getSubitem(), cart.getItem());
+				cart.setSgst(DateTimeUtils.changeFormat(sgst));
 				
 				double gst = cgst+sgst;
 				

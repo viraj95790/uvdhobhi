@@ -131,17 +131,17 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
 			accountForm.setVmobile(register1.getMobile());
     		
     		
-			ArrayList<Account> itemlist = accountDAO.getproductmasterlist(selectedid);
+			ArrayList<Cart> itemlist = accountDAO.getitemproductlist(selectedid, "");
 			accountForm.setMasterProductList(itemlist);
 			
-			Account account = itemlist.get(itemlist.size()-1);
-			accountForm.setOrderamount(account.getOrderamount());
-			accountForm.setDebit(account.getDebit());
-			accountForm.setGst(account.getGst());
-			accountForm.setTotalcgstvalue(account.getTotalcgstvalue());
-			accountForm.setTotalsgstvalue(account.getTotalsgstvalue());
-			accountForm.setTotaldebit(account.getTotaldebit());
-			accountForm.setDate(account.getDate());
+			Cart cart = itemlist.get(itemlist.size()-1);
+			accountForm.setOrderamount(cart.getOrderamount());
+			accountForm.setDebit(cart.getDebit());
+			/*accountForm.setGst(cart.getGst());*/
+			accountForm.setTotalcgstvalue(cart.getTotalcgstvalue());
+			accountForm.setTotalsgstvalue(cart.getTotalsgstvalue());
+			/*accountForm.setTotaldebit(cart.getTotaldebit());*/
+			accountForm.setDate(cart.getDate());
 			accountForm.setId(Integer.parseInt(selectedid));
 			
 			

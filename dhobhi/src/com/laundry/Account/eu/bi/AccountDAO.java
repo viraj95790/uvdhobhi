@@ -3,7 +3,6 @@ package com.laundry.Account.eu.bi;
 import java.util.ArrayList;
 
 import com.laundry.Account.eu.entity.Account;
-
 import com.laundry.Register.eu.entity.Cart;
 import com.laundry.Register.eu.entity.Master;
 import com.laundry.main.web.common.helper.LoginInfo;
@@ -12,7 +11,7 @@ public interface AccountDAO {
 
 	ArrayList<Account> getchargeinvoice(String customerid,int vendorid,int usertype,String fromdate,String todate);
 
-	ArrayList<Account> getproductmasterlist(String selectedid);
+	
 
 	int savecustpayment(Account account);
 
@@ -38,6 +37,8 @@ public interface AccountDAO {
 	ArrayList<Cart> displaycabrcodeinf(String vendor, LoginInfo loginInfo);
 
 	int deletebarcodedata(LoginInfo loginInfo);
+
+	ArrayList<Cart> getitemproductlist(String selectedid, String string);
 
 
 }
