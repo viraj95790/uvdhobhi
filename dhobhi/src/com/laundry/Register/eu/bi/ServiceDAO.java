@@ -47,5 +47,9 @@ public interface ServiceDAO {
 
 	String checkEmailIdExist(String email);
 
+	ArrayList<Master> getHostalList();
+
+	int updateUserInfo(int id, String address, String mobile,String landmark,String city,String pincode);
+
 
 }

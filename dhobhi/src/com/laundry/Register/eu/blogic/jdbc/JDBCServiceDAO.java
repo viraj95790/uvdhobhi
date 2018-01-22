@@ -602,6 +602,24 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 				master.setMobile(rs.getString(3));
 				master.setEmail(rs.getString(4));
 				master.setAddress(rs.getString(5)+", "+rs.getString(6)+", "+rs.getString(7)+", "+rs.getString(8));
+				master.setLandmark(rs.getString(6));
+				master.setCity(rs.getString(7));
+				master.setPincode(rs.getString(8));
+				
+				if(rs.getString(5)==null){
+					master.setAddress("");
+				}
+				if(rs.getString(6)==null){
+					master.setLandmark("");
+				}
+				
+				if(rs.getString(7)==null){
+					master.setCity("");
+				}
+				
+				if(rs.getString(8)==null){
+					master.setPincode("");
+				}
 				
 				list.add(master);
 				
@@ -631,6 +649,45 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		}
 		
 		return reslt;
+	}
+
+	public ArrayList<Master> getHostalList() {
+		PreparedStatement preparedStatement = null;
+		ArrayList<Master>list = new ArrayList<Master>();
+		String sql = "SELECT id,concat(name,' ',surname) FROM registration where usertype = 4 ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				Master master = new Master();
+				master.setId(rs.getInt(1));
+				master.setName(rs.getString(2));
+				
+				list.add(master);
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	public int updateUserInfo(int id, String address, String mobile,String landmark,String city,String pincode) {
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "update registration set address='"+address+"', mobile='"+mobile+"' , landmark='"+landmark+"', city='"+city+"', pincode='"+pincode+"' where id = "+id+"";
+		
+		try{
+			
+			preparedStatement = connection.prepareStatement(sql);
+			result = preparedStatement.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	

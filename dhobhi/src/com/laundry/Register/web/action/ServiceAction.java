@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 
+
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
 import com.laundry.Account.eu.entity.Account;
@@ -390,6 +391,17 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		    masterForm.setDeliver_date(cart1.getDeliver_date());
 		    masterForm.setDtime(cart1.getDtime());
 		    
+		    //set profile info
+		    Master master2 = list.get(0);
+		    masterForm.setAddress(master2.getAddress());
+		    masterForm.setMobile(master2.getMobile());
+		    masterForm.setLandmark(master2.getLandmark());
+		    masterForm.setCity(master2.getCity());
+		    masterForm.setPincode(master2.getPincode());
+		    
+		    ArrayList<Master>hostallist = serviceDAO.getHostalList();
+		    masterForm.setHostallist(hostallist);
+		    
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -397,6 +409,60 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			connection.close();
 		}
 		return "cartinvoice";
+	}
+	
+	
+	public String saveuinfo() throws Exception{
+		
+		Connection connection = null;
+		try {
+			connection = Connection_provider.getconnection();
+			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			String address = request.getParameter("address");
+			String mob = request.getParameter("mob");
+			String landmark = request.getParameter("landmark");
+			String city = request.getParameter("city");
+			String pincode = request.getParameter("pincode");
+			
+					
+			
+			int u = serviceDAO.updateUserInfo(loginInfo.getId(),address,mob,landmark,city,pincode);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return cartinvoice();
+	}
+	
+	public String pinfo(){
+		if(!verifyLogin(request)){
+			return "login";
+		}
+		Connection connection = null;
+		try {
+			connection = Connection_provider.getconnection();
+			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			String id = request.getParameter("id");
+			
+			  ArrayList<Master> list = serviceDAO.getcustomerinfo(Integer.parseInt(id));
+			  Master master2 = list.get(0);
+			  
+			  String data = master2.getAddress() + "~" + master2.getLandmark() +  "~" + master2.getCity() +
+					  "~" + master2.getPincode();
+			  response.setContentType("text/html");
+				response.setHeader("Cache-Control", "no-cache");
+				response.getWriter().write(data);
+			  
+			  
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	public String getprice(){

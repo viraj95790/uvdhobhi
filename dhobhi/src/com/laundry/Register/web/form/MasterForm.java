@@ -74,6 +74,11 @@ public class MasterForm {
 	
 	private String todate= "";
 	
+	private  ArrayList<Master>hostallist;
+	
+	private String landmark;
+	private String city;
+	private String pincode;
 	
 	
 	
@@ -83,9 +88,38 @@ public class MasterForm {
 	
 	
 	
-	
-	
-	
+	public String getLandmark() {
+		return landmark;
+	}
+
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	public ArrayList<Master> getHostallist() {
+		return hostallist;
+	}
+
+	public void setHostallist(ArrayList<Master> hostallist) {
+		this.hostallist = hostallist;
+	}
+
 	public String getOrderamount() {
 		return orderamount;
 	}

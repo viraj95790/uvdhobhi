@@ -70,122 +70,7 @@
                     
                    <!--  updatecode -->
                     
-<!-- Add new ot charge popup -->
-  <div class="modal fade" id="newotchargepopupid" tabindex="-1"
-   role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-     <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">
-       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-      </button>
-      <h4 class="modal-title" id="myModalLabel">Add New Procedure
-       Charge</h4>
-     </div>
-     <div class="modal-body">
-      <div class="row">
-       <div class="col-lg-3">
-        <label>OT Charge</label>
-       </div>
-       <div class="col-lg-9">
-
-        <input type="number" id="potcharge" name="potcharge"
-         class="form-control showToolTip"
-         onblur="setPuresevaExistingClientData()"
-         placeholder="Enter OT Charge" title="Enter OT Charge"
-         data-toggle="tooltip " />
-       </div>
-      </div>
-      <br>
-      <div class="row">
-       <div class="col-lg-3">
-        <label>Anesthesia Charge</label>
-       </div>
-       <div class="col-lg-9">
-
-        <input type="number" id="panetcharge" name="panetcharge"
-         class="form-control showToolTip"
-         onblur="setPuresevaExistingClientData()"
-         placeholder="Enter Anesthesia  Charge"
-         title="Enter Anesthesia Charge" data-toggle="tooltip " />
-       </div>
-      </div>
-      <br>
-
-      <div class="row">
-       <div class="col-lg-3">
-        <label>Surgeon Charge</label>
-       </div>
-       <div class="col-lg-9">
-
-        <input type="number" id="psurcharge" name="psurcharge"
-         class="form-control showToolTip"
-         onblur="setPuresevaExistingClientData()"
-         placeholder="Enter Surgeon Charge" title="Enter Surgeon Charge"
-         data-toggle="tooltip " />
-       </div>
-      </div>
-      <br>
-
-      <div class="row">
-       <div class="col-lg-3">
-        <label>Surgical Item Charge</label>
-       </div>
-       <div class="col-lg-9">
-
-        <input type="number" id="sic" name="sic"
-         class="form-control showToolTip"
-         onblur="setPuresevaExistingClientData()"
-         placeholder="Enter Surgical Item Charge"
-         title="Enter Surgical Item Charge" data-toggle="tooltip " />
-       </div>
-      </div>
-      <br>
-
-
-      <div class="row">
-       <div class="col-lg-6">
-        <div class="col-lg-3">
-         <label>Anesthesia Doctor</label>
-        </div>
-        <div class="col-lg-9">
-
-         <input type="text" onchange="saveAnisthesiaDoctor(this.value)"
-          id="anidoctor" name="anidoctor"
-          class="form-control showToolTip"
-          onblur="setPuresevaExistingClientData()"
-          placeholder="Enter Anesthesia Doctor Name"
-          title="Enter Anesthesia Doctor Name" data-toggle="tooltip " />
-        </div>
-       </div>
-
-       <div class="col-lg-6">
-        <div class="col-lg-3">
-         <label>Fees</label>
-        </div>
-        <div class="col-lg-9">
-
-         <input type="number" id="anifees" name="anifees"
-          class="form-control showToolTip"
-          placeholder="Enter Anesthesia Doctor Fees"
-          title="Enter Anesthesia Doctor Fees" data-toggle="tooltip " />
-        </div>
-       </div>
-
-      </div>
-      <br>
-
-     </div>
-     <div class="modal-footer">
-
-      <button type="button" class="btn btn-primary"
-       onclick="saveproceduralOtCharge();" data-dismiss="modal">Save</button>
-      <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
-     </div>
-    </div>
-   </div>
-  </div>
-                    
+       
                     
                     
                     
@@ -299,7 +184,8 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="padding-top:15px">
-                        <a href="sendotpService" class="btn btn-primary">Cash on delivery</a>
+                       <!--  <a href="sendotpService" class="btn btn-primary">Cash on delivery</a> -->
+                        <a href="#" onclick="goforot()" class="btn btn-primary">Cash on delivery</a>
                     </div>
                    
                        
@@ -718,3 +604,103 @@
         </div>
     </section>
     <!--End  Logo List -->
+    
+    
+    <!-- Add new ot charge popup -->
+<s:form action="saveuinfoService" id="saveunfoFrm" theme="simple">
+  <div class="modal fade" id="newotchargepopupid" tabindex="-1"
+   role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">
+       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">Update Profile Info</h4>
+     </div>
+     <div class="modal-body">
+     
+       <div class="row">
+       <div class="col-lg-3">
+        <label>Select Hostel</label>
+       </div>
+       <div class="col-lg-9">
+
+       <s:select onchange="showUserProfileData(this.value)" name="hname" id="hid" list="hostallist"
+       listKey="id" listValue="name" headerKey="0" headerValue="Select Hostal"
+       cssClass="form-conrol"/>
+       </div>
+      </div>
+      <br>
+      
+      <div class="row">
+       <div class="col-lg-3">
+        <label>Address</label>
+       </div>
+       <div class="col-lg-9">
+
+       <s:textarea name="address" id="paddress" cssClass="form-control"/>
+       </div>
+      </div>
+      <br>
+      
+       <div class="row">
+       <div class="col-lg-3">
+        <label>Landmark</label>
+       </div>
+       <div class="col-lg-9">
+
+      <s:textfield name="landmark" id="plandmark" cssClass="form-control"/>
+       </div>
+      </div>
+      <br>
+      
+        <div class="row">
+       <div class="col-lg-3">
+        <label>City</label>
+       </div>
+       <div class="col-lg-9">
+
+      <s:textfield name="city" id="pcity" cssClass="form-control"/>
+       </div>
+      </div>
+      <br>
+      
+        <div class="row">
+       <div class="col-lg-3">
+        <label>Pincode</label>
+       </div>
+       <div class="col-lg-9">
+
+      <s:textfield name="picode" id="ppincode" cssClass="form-control"/>
+       </div>
+      </div>
+      <br>
+      
+      
+      <div class="row">
+       <div class="col-lg-3">
+        <label>Mobile</label>
+       </div>
+       <div class="col-lg-9">
+
+      <s:textfield name="mobile" id="pmobile" cssClass="form-control"/>
+       </div>
+      </div>
+      <br>
+
+      
+
+     </div>
+     <div class="modal-footer">
+
+      <button onclick="saveuserInfo()" type="button" class="btn btn-primary"
+        >Save</button>
+      <!-- <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> -->
+     </div>
+    </div>
+   </div>
+  </div>
+  
+  </s:form>
+             

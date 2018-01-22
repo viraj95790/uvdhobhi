@@ -175,3 +175,107 @@ function openVbarcode(action){
 	 
 	 $( "#newotchargepopupid" ).modal( "show" );
  }
+
+ 
+ function showUserProfileData(id){
+
+	 var url = "pinfoService?id="+id+" ";
+	 
+	 
+	 if (window.XMLHttpRequest) {
+			req = new XMLHttpRequest();
+		}
+		else if (window.ActiveXObject) {
+			isIE = true;
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+		}   
+	               
+	    req.onreadystatechange = showUserProfileDataRequest;
+	    req.open("GET", url, true); 
+	              
+	    req.send(null); 
+
+	 
+ }
+ 
+ function showUserProfileDataRequest(){
+	  if (req.readyState == 4) {
+			if (req.status == 200) {
+				
+				var data = req.responseText;	
+				var tmp = data.split("~");
+				
+				document.getElementById('paddress').value = tmp[0];
+				document.getElementById('plandmark').value = tmp[1];
+				document.getElementById('pcity').value = tmp[2];
+				document.getElementById('ppincode').value = tmp[3];
+			//	document.getElementById('pmobile').value = tmp[1];
+		
+			}
+	  }
+ }
+ 
+ 
+ function saveuserInfo(){
+	 var address = document.getElementById('paddress').value;
+	 var mob = document.getElementById('pmobile').value;
+	 var landmark = document.getElementById('plandmark').value;
+	 var city = document.getElementById('pcity').value;
+	 var pincode = document.getElementById('ppincode').value;
+	 
+	 if(address==''){
+		 alert('Please Enter Address');
+	 }
+	 
+	 else if(landmark==''){
+		 alert('Please Enter landmark');
+	 }
+	 else if(city==''){
+		 alert('Please Enter city');
+	 }
+	 else if(pincode==''){
+		 alert('Please Enter pincode');
+	 }
+	 else if(mob==''){
+		 alert('Please Enter mobile number');
+	 }
+	 
+	 else{
+ var url = "saveuinfoService?address="+address+"&mob="+mob+"&landmark="+landmark+"&city="+city+"&pincode="+pincode+" ";
+	 
+	 
+	 if (window.XMLHttpRequest) {
+			req = new XMLHttpRequest();
+		}
+		else if (window.ActiveXObject) {
+			isIE = true;
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+		}   
+	               
+	    req.onreadystatechange = saveuserInfoRequest;
+	    req.open("GET", url, true); 
+	              
+	    req.send(null); 
+	    
+	 }
+
+ }
+	 
+ 
+ 
+ function saveuserInfoRequest(){
+	  if (req.readyState == 4) {
+			if (req.status == 200) {
+				window.location.reload();
+			}
+	  }
+}
+ 
+ function goforot(){
+	 if(document.getElementById('pmobile').value==''){
+		 alert('Please update address and mobile number!!');
+	 }else{
+		 window.location.href='sendotpService';
+	 }
+	 
+ }

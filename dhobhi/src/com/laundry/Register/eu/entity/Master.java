@@ -50,7 +50,9 @@ public class Master {
 	private String imageName;
 	
 	
-	
+	private String landmark;
+	private String city;
+	private String pincode;
 
 	
 	
@@ -60,6 +62,30 @@ public class Master {
 	
 	
 	
+	public String getLandmark() {
+		return landmark;
+	}
+
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
 	public String getProductid() {
 		return productid;
 	}
