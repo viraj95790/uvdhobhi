@@ -273,6 +273,7 @@ function openVbarcode(action){
  
  function goforot(){
 	 if(document.getElementById('pmobile').value==''){
+		 $( "#newotchargepopupid" ).modal( "show" );
 		 alert('Please update address and mobile number!!');
 	 }else{
 		 window.location.href='sendotpService';
