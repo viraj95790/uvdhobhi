@@ -31,7 +31,8 @@
 		<action name="*Login" method="{1}"
 			class="com.pacs.main.web.action.LoginAction">
 			<result name="input" type="tiles">inputlogin</result>
-			<result name="success" type="redirect">Certificate</result>
+			<!-- <result name="success" type="redirect">Master</result> -->
+			 <result name="success" type="redirect">Certificate</result> 
 
 		</action>
 

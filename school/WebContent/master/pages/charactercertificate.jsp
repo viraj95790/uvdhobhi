@@ -33,14 +33,6 @@
                 word-break: normal;
             }
 
-            .tg .tg-avqc {
-                font-weight: bold;
-                font-size: 24px;
-                font-family: "Comic Sans MS", cursive, sans-serif !important;
-                ;
-                text-align: center;
-            }
-
             .tg .tg-c6m9 {
                 font-weight: bold;
                 font-size: 22px;
@@ -76,21 +68,29 @@
                 text-align: center;
             }
 
-            .tg .tg-hd86 {
-                font-weight: bold;
-                font-family: "Comic Sans MS", cursive, sans-serif !important;
-                ;
-                text-align: right;
-            }
-
             .tg .tg-rpan {
                 font-weight: bold;
                 font-family: "Comic Sans MS", cursive, sans-serif !important;
             }
 
+            .tg .tg-4ro1 {
+                font-weight: bold;
+                font-family: "Comic Sans MS", cursive, sans-serif !important;
+                ;
+                text-align: center;
+            }
+
             .tg .tg-xoji {
                 font-weight: bold;
                 font-size: 15px;
+                font-family: "Comic Sans MS", cursive, sans-serif !important;
+                ;
+                text-align: center;
+            }
+
+            .tg .tg-mhg9 {
+                font-weight: bold;
+                font-size: 32px;
                 font-family: "Comic Sans MS", cursive, sans-serif !important;
                 ;
                 text-align: center;
@@ -121,11 +121,12 @@
         <colgroup>
             <col style="width: 93px">
             <col style="width: 98px">
-            <col style="width: 174px">
-            <col style="width: 208px">
+            <col style="width: 71px">
+            <col style="width: 126px">
             <col style="width: 79px">
             <col style="width: 250px">
         </colgroup>
+
         <tr>
             <th class="tg-xoji" colspan="6">सरकारमान्य <br>महिला सेवा मंडळ, वर्धा द्वारा संचालित</th>
         </tr>
@@ -133,15 +134,14 @@
             <td class="tg-mfmo" colspan="6">महिला आश्रम बुनियादी प्राथमिक मराठी विद्यालय, वर्धा</td>
         </tr>
         <tr>
-            <td class="tg-rpan" colspan="2">07152-251437</td>
-            <td class="tg-s6z2" colspan="2" rowspan="2"><img src="img/Mahila-Aashram-Logo.png" /></td>
-            <td class="tg-hd86" colspan="2" rowspan="2">युडायस क्र. 27080817902<br>क्रमांक : </td>
+            <td class="tg-rpan" colspan="2">07152-251437<br>युडायस क्र. 27080817902<br>क्रमांक :</td>
+            <td class="tg-s6z2" colspan="4" rowspan="2"><img style="margin: 0px 30% 0px  0px" src="img/Mahila-Aashram-Logo.png"></td>
+        </tr>
+         <tr>
+            <td class="tg-4ro1" colspan="2">संस्थापक,<br>जमनालाल बजाज <br>शांताबाई रानीवाला</td>
         </tr>
         <tr>
-            <td class="tg-rpan" colspan="2">संस्थापक,<br>जमनालाल बजाज <br>शांताबाई रानीवाला</td>
-        </tr>
-        <tr>
-            <td class="tg-avqc" colspan="6">प्रमाणित - प्रमाणपत्र</td>
+            <td class="tg-mhg9" colspan="6">प्रमाणित - प्रमाणपत्र</td>
         </tr>
         <%Certificate certificate = (Certificate) session.getAttribute("certificate"); %>
         <tr>

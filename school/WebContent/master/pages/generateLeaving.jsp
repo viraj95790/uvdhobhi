@@ -88,6 +88,9 @@
         
         <div class="tg-wrap" >
             <table class="tg" width="100%">
+             <tr>
+                    <td class="tg-74rq" colspan="20"> महिला आश्रम बुनियादी प्राथमिक मराठी विद्यालय, वर्धा</td>
+                </tr>
                 <tr>
                     <th class="tg-rpan" colspan="8">व्यवस्थापनाचे नाव</th>
                     <th class="tg-rpan" colspan="8">: महिला सेवा मंडल, वर्धा</th>

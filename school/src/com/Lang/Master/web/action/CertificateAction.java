@@ -63,7 +63,7 @@ public class CertificateAction extends BaseAction implements Preparable, ModelDr
 	
      public String addleavinginfo() throws Exception{
     	 Connection connection = null;
-    	 /*request.setCharacterEncoding("UTF-8");response.setCharacterEncoding("UTF-8");*/
+    	/* request.setCharacterEncoding("UTF-8");response.setCharacterEncoding("UTF-8");*/
  		try{
  			connection = Connection_provider.getconnection();
  			CertificateDAO certificateDAO = new JDBCCertificateDAO(connection);

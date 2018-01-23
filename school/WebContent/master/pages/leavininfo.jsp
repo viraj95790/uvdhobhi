@@ -787,12 +787,12 @@
     
 <script type="text/javascript" src="master/js/master.js"></script>
 
-<%--  <%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+  <%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 
-<%
+<%-- <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
-%> --%>
+%>  --%>
 
 
 <script>
@@ -863,7 +863,7 @@
 					</div>
 					<div class="x_content">
 
-						<s:form action="addleavinginfoCertificate" cssClass="form-control" theme="simple">
+						<s:form action="addleavinginfoCertificate" theme="simple">
 							<div class="nondani-content">
 
 								<div class="row" style="margin-left: 25%;">
@@ -881,24 +881,24 @@
 										<label>&#2332;&#2344;&#2352;&#2354;
 											&#2352;&#2332;&#2367;&#2360;&#2381;&#2335;&#2352;
 											&#2325;&#2381;&#2352;&#2350;&#2366;&#2306;&#2325;</label>
-										<input class="hindikrutidev hindi" id="register_number"
+										<s:textfield cssClass="form-control" id="register_number"
 											name="register_number" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2360;&#2381;&#2335;&#2369;&#2337;&#2306;&#2335;
 											. &#2310;&#2351; . &#2337;&#2368;</label>
-										<input class="hindikrutidev hindi" id="studentid"
+										<s:textfield cssClass="form-control" id="studentid"
 											name="studentid" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2351;&#2369; . &#2310;&#2351; .
 											&#2337;&#2368;</label>
-										<input class="hindikrutidev hindi" id="uid" name="uid" />
+										<s:textfield cssClass="form-control" id="uid" name="uid" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2357;&#2367;&#2342;&#2381;&#2351;&#2366;&#2352;&#2381;&#2341;&#2381;&#2351;&#2366;&#2306;&#2330;&#2375;
 											&#2344;&#2366;&#2357; </label>
-										<input class="hindikrutidev hindi" id="studentname"
+										<s:textfield cssClass="form-control" id="studentname"
 											name="studentname" />
 									</div>
 								</div>
@@ -906,84 +906,84 @@
 
 									<div class="col-md-3">
 										<label>&#2310;&#2337;&#2344;&#2366;&#2357; </label>
-										<input class="hindikrutidev hindi" id="lastname"
+										<s:textfield cssClass="form-control" id="lastname"
 											name="lastname" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2357;&#2337;&#2367;&#2354;&#2366;&#2306;&#2330;&#2375;
 											&#2344;&#2366;&#2357; </label>
-										<input class="hindikrutidev hindi" id="fathername"
+										<s:textfield cssClass="form-control" id="fathername"
 											name="fathername" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2310;&#2312;&#2330;&#2375;
 											&#2344;&#2366;&#2357; </label>
-										<input class="hindikrutidev hindi" id="mothername"
+										<s:textfield cssClass="form-control" id="mothername"
 											name="mothername" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2352;&#2366;&#2359;&#2381;&#2335;&#2381;&#2352;&#2368;&#2351;&#2340;&#2381;&#2357;
 										</label>
-										<input class="hindikrutidev hindi" id="nationality"
+										<s:textfield cssClass="form-control" id="nationality"
 											name="nationality" />
 									</div>
 									<div class="col-md-3">
 
 										<label>&#2350;&#2366;&#2340;&#2371;&#2349;&#2366;&#2359;&#2366;
 										</label>
-										<input class="hindikrutidev hindi" id="mothertongue"
+										<s:textfield cssClass="form-control" id="mothertongue"
 											name="mothertongue" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2343;&#2352;&#2381;&#2350; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="religion"
+										<s:textfield cssClass="form-control" id="religion"
 											name="religion" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2332;&#2366;&#2340; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="cast" name="cast" />
+										<s:textfield cssClass="form-control" id="cast" name="cast" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2346;&#2379;&#2335;&#2332;&#2366;&#2340; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="subcast"
+										<s:textfield cssClass="form-control" id="subcast"
 											name="subcast" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2332;&#2344;&#2381;&#2350;&#2360;&#2381;&#2341;&#2337;<sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="birthplace"
+										<s:textfield cssClass="form-control" id="birthplace"
 											name="birthplace" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2340;&#2366;&#2354;&#2369;&#2325;&#2366; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="taluka" name="taluka" />
+										<s:textfield cssClass="form-control" id="taluka" name="taluka" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2332;&#2367;&#2354;&#2381;&#2361;&#2366; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="district"
+										<s:textfield cssClass="form-control" id="district"
 											name="district" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2352;&#2366;&#2332;&#2381;&#2351; <sup>*</sup>
 										</label>
-										<input class="hindikrutidev hindi" id="nation" name="nation" />
+										<s:textfield cssClass="form-control" id="nation" name="nation" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2342;&#2375;&#2358; <sup>*</sup></label>
-										<input class="hindikrutidev hindi" id="country"
+										<s:textfield cssClass="form-control" id="country"
 											name="country" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2332;&#2344;&#2381;&#2350;&#2342;&#2367;&#2344;&#2366;&#2306;&#2325;
 											<span class="required">*</span>
 										</label>
-										<input class="form-control col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="dob" name="dob" />
 									</div>
 									<div class="col-md-3">
 										<label>&#2332;&#2344;&#2381;&#2350;&#2342;&#2367;&#2344;&#2366;&#2306;&#2325;
 											&#2309;&#2325;&#2381;&#2359;&#2352;&#2368; <sup>*</sup>
 										</label>
-										<input class="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="dob_letters" name="dob_letters" />
 									</div>
 
@@ -994,7 +994,7 @@
 											&#2311;&#2351;&#2340;&#2381;&#2340;&#2366; <span
 											class="required">*</span>
 										</label>
-										<input class="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="preschool" name="preschool" />
 									</div>
 
@@ -1003,7 +1003,7 @@
 											&#2342;&#2367;&#2344;&#2366;&#2306;&#2325; <span
 											class="required">*</span>
 										</label>
-										<input class="form-control" id="admissiondate"
+										<s:textfield cssClass="form-control" id="admissiondate"
 											name="admissiondate" placeholder="admissiondate" />
 									</div>
 
@@ -1016,7 +1016,7 @@
 											&#2358;&#2367;&#2325;&#2340; &#2361;&#2379;&#2340;&#2366; <span
 											class="required">*</span>
 										</label>
-										<input class="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="prestandard" name="prestandard" />
 									</div>
 
@@ -1026,7 +1026,7 @@
 											&#2346;&#2381;&#2352;&#2327;&#2340;&#2367; <span
 											class="required">*</span>
 										</label>
-										<input class="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="progress" name="progress" />
 									</div>
 									<div class="col-md-3">
@@ -1034,7 +1034,7 @@
 											&#2357;&#2352;&#2381;&#2340;&#2339;&#2370;&#2325; <span
 											class="required">*</span>
 										</label>
-										<input class="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="behavior" name="behavior" />
 									</div>
 									<div class="col-md-3">
@@ -1042,7 +1042,7 @@
 											&#2360;&#2379;&#2337;&#2339;&#2381;&#2351;&#2366;&#2330;&#2375;
 											&#2325;&#2366;&#2352;&#2339; <span class="required">*</span>
 										</label>
-										<s:textfield cssClass="hindikrutidev hindi col-md-7 col-xs-12"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="reasonofleaving" name="reasonofleaving" />
 									</div>
 
@@ -1050,7 +1050,7 @@
 										<label> &#2358;&#2375;&#2352;&#2366;  <span
 											class="required">*</span>
 										</label>
-										<input class="hindikrutidev hindi"
+										<s:textfield cssClass="form-control col-md-7 col-xs-12"
 											id="shera" name="shera" />
 									</div>
 
@@ -1060,7 +1060,7 @@
 											&#2342;&#2367;&#2344;&#2366;&#2306;&#2325; <span
 											class="required">*</span>
 										</label>
-										<input class="form-control" id="leavingdate"
+										<s:textfield cssClass="form-control" id="leavingdate"
 											name="leavingdate" />
 									</div>
 
