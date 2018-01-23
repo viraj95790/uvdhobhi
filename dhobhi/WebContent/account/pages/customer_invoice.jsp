@@ -177,37 +177,22 @@
 
     <section class="section-content">
         <div class="container" style="border: 1px solid #000; padding: 10px 0px 10px 0px; ">
-            <div class="row">
+           
+            <div class="">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center setinfoline">
+                    <h1 class="taxhead">TAX INVOICE</h1>
+                </div>
+            </div>
+           <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                        <h1 class="heading">PDDR MEDICAL PRODUCTS & SERVICES(I) PRIVATE LIMITED</h1>
+                       <h1 class="heading">PDDR MEDICAL PRODUCTS & SERVICES(I) PRIVATE LIMITED</h1>
                         <h4 class="subheading">BALAJI NAGAR, HINGNA NAGPUR Nagpur MH 440028</h4>
                         <h6 class="cinno">CIN-U74999MH2016PTC286620</h6>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <h4 class="subheading">GSTIN</h4>
                         <h4 class="subheading">27AAICP903P43P1ZN</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center setinfoline">
-                    <h1 class="taxhead">TAX INVOICE</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" border-right: 1px solid #000; margin-bottom: 10px;">
-                        <p><b>Invoice No:</b> <s:property value="id"/></p>
-                        <p><b>Invoice Date:</b> <s:property value="date"/></p>
-                        <p><b>Reverse Charge(Y/N):</b></p>
-                        <p><b>State:</b> MAHARASHTRA</p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" margin-bottom: 10px;">
-                        <p><b>Transport Mode:</b></p>
-                        <p><b>Vehicle number:</b></p>
-                        <p><b>Date of supply:</b></p>
-                        <p><b>Place of supply:</b></p>
                     </div>
                 </div>
             </div>
@@ -222,7 +207,9 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" border-right: 1px solid #000; margin-bottom: 10px;">
-                        <p><b>Name:</b> PDDR MEDICAL PRODUCTS & SERVICES(I) PRIVATE LIMITED</p><br />
+                       <p><b>Invoice No:</b> <s:property value="id"/></p>
+                        <p><b>Invoice Date:</b> <s:property value="date"/></p>
+                        <p><b>Name:</b> PDDR MEDICAL PRODUCTS & SERVICES(I) PRIVATE LIMITED</p>
                         <p><b>GSTIN</b> 27AAICP9043P1ZN</p>
                         <p><b>State:</b> MAHARASHTRA</p>
                     </div>
@@ -241,16 +228,16 @@
                             <tr>
                                 <th>Sr.no</th>
                                 <th>Product Description</th>
-                                <th>HSN Code</th>
-                                <th>UOM</th>
+                                <!-- <th>HSN Code</th>
+                                <th>UOM</th> -->
                                 <th>Qty</th>
                                 <th>Rate</th>
                                 <th>Amount</th>
                                 <th>Discount</th>
                                 <th>Taxable Value</th>
-                                <th colspan="2">CGST</th>
-                                <th colspan="2">SGST</th>
-                                <th>GST</th>
+                                <th colspan="2">CGST 9%</th>
+                                <th colspan="2">SGST 9%</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -259,13 +246,11 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td colspan="2"></td>
+                                <td colspan="2"></td>
+                                
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
                                 
                             </tr>
                         </tfoot>
@@ -276,18 +261,18 @@
                              
                                 <td><%=i %> <% i++ ; %></td>
                                 <td><s:property value="subitem"/></td>
-                                <td>0</td>
-                                <td>0</td>
+                                 <!-- <td>0</td>
+                                <td>0</td> -->
                                 <td><s:property value="qty"/></td>
                                 <td><s:property value="price"/></td>
                                 <td><s:property value="totalamount"/></td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td><s:property value="cgst"/></td>
-                                <td>%</td>
-                                <td><s:property value="sgst"/></td>
-                                <td>%</td>
-                                <td><s:property value="gst"/> %</td>
+                                <td colspan="2"><s:property value="cgst"/></td>
+                               
+                                <td colspan="2"><s:property value="sgst"/></td>
+                                
+                                <td><s:property value="totalvaluewithgst"/></td>
                             </tr>
                          </s:iterator>
                         </tbody>
@@ -312,13 +297,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p><b>Add: CGST</b> </p>
+                                        <p><b>Add: CGST 9%</b> </p>
                                     </td>
                                     <td><s:property value="totalcgstvalue"/></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p><b>Add: SGST</b></p>
+                                        <p><b>Add: SGST 9%</b></p>
                                     </td>
                                     <td><s:property value="totalsgstvalue"/></td>
                                 </tr>
@@ -377,10 +362,10 @@
                             <tbody>
                                 
                                 <tr>
-                                    <td style="background-color: rgba(39, 166, 217, 0.59); width: 82%;">
+                                    <!-- <td style="background-color: rgba(39, 166, 217, 0.59); width: 82%;">
                                         <p><b>GST on Reverse Charge</b></p>
                                     </td>
-                                    <td>0</td>
+                                    <td>0</td> -->
                                 </tr>
                             </tbody>
                         </table>

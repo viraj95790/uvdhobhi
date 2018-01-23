@@ -255,14 +255,18 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				cart.setOrderamount(DateTimeUtils.changeFormat(orderamt));
 				
 				double cgst = getcgst(cart.getSubitem(), cart.getItem());
-				cart.setCgst(DateTimeUtils.changeFormat(cgst));
 				double sgst = getsgst(cart.getSubitem(), cart.getItem());
-				cart.setSgst(DateTimeUtils.changeFormat(sgst));
 				
 				double gst = cgst+sgst;
 				
 				double cgstvalue = total * cgst/100 ;
 				double sgstvalue = total * sgst/100 ;
+				
+				double totalamount = total+cgstvalue+sgstvalue;
+				cart.setTotalvaluewithgst(DateTimeUtils.changeFormat(totalamount));
+				
+				cart.setCgst(DateTimeUtils.changeFormat(cgstvalue));
+				cart.setSgst(DateTimeUtils.changeFormat(sgstvalue));
 				
 				totalcgstvalue = totalcgstvalue + cgstvalue;
 				totalsgstvalue = totalsgstvalue + sgstvalue;

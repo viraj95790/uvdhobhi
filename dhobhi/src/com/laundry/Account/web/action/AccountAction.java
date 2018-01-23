@@ -137,11 +137,14 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
 			Cart cart = itemlist.get(itemlist.size()-1);
 			accountForm.setOrderamount(cart.getOrderamount());
 			
-			accountForm.setDebit(cart.getDebit());
+			
 			double debit = Double.parseDouble(cart.getDebit());
+		    double valueRounded = Math.round(debit);
+		    accountForm.setDebit(DateTimeUtils.changeFormat(valueRounded));
+			
 			
 			NumberToWord obj = new NumberToWord();
-			String convertvalue = obj.convert((int) debit);
+			String convertvalue = obj.convert((int) valueRounded);
 			accountForm.setTotalinword(convertvalue);
 			
 			/*accountForm.setGst(cart.getGst());*/

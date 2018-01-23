@@ -52,7 +52,7 @@ public class Cart {
 	
 	private String orderamount;
 	
-	
+	private String totalvaluewithgst;
 	
 	
 	
@@ -62,6 +62,15 @@ public class Cart {
 	
 
 	
+	
+	public String getTotalvaluewithgst() {
+		return totalvaluewithgst;
+	}
+
+	public void setTotalvaluewithgst(String totalvaluewithgst) {
+		this.totalvaluewithgst = totalvaluewithgst;
+	}
+
 	public String getOrderamount() {
 		return orderamount;
 	}

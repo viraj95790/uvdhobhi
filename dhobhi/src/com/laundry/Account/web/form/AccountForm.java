@@ -71,6 +71,8 @@ public class AccountForm {
 	
 	
 	
+	
+	
 	private ArrayList<Account> chargeinvList;
 	private ArrayList<Master> customerList;
 	/*private ArrayList<Account> masterProductList;*/
@@ -91,6 +93,9 @@ public class AccountForm {
 	
 	
 	
+	
+	
+
 	public String getTotalinword() {
 		return totalinword;
 	}
