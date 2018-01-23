@@ -16,6 +16,7 @@ import org.apache.struts2.ServletActionContext;
 
 
 
+
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
 import com.laundry.Account.eu.entity.Account;
@@ -170,6 +171,18 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 	}
 	
 	public String thx(){
+		
+		Connection connection = null;
+		try{
+			connection = Connection_provider.getconnection();
+			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			int invoiceid = (Integer) session.getAttribute("carchargesessioninvoiceid");
+			int u = serviceDAO.updateConfirmCharge(invoiceid);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		return "thx";
 	}
@@ -352,6 +365,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			
 			
 			int invoiceid = serviceDAO.insertcartdata(loginInfo.getUserId(), cart1, loginInfo.getId());
+			session.setAttribute("carchargesessioninvoiceid", invoiceid);
 			
 		    ArrayList<Cart> cartlist = (ArrayList<Cart>) session.getAttribute("cartList");
 			double total = 0, orderamt=0;
@@ -553,6 +567,14 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			
 			connection = Connection_provider.getconnection();
 			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			//delete not confirmed charges
+			ArrayList<Master>invoiceList = serviceDAO.getNotConfirmedInvoiceList();
+			for(Master master : invoiceList){
+				int del = serviceDAO.deleteNotConfirmedCharge(master.getId());
+			}
+			
+			int del = serviceDAO.deleteNotConfirmedinvoice();
 			
 					
 			//for vendor

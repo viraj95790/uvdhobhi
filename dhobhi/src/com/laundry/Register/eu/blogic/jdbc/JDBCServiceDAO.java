@@ -690,5 +690,73 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return result;
 	}
 
+	public int updateConfirmCharge(int invoiceid) {
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "update cart_invoice set confirm=1 where id = "+invoiceid+" ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			result = preparedStatement.executeUpdate();
+					
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public ArrayList<Master> getNotConfirmedInvoiceList() {
+		PreparedStatement preparedStatement = null;
+		ArrayList<Master>list = new ArrayList<Master>();
+		String sql = "SELECT id FROM cart_invoice where confirm = 0 ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				Master master = new Master();
+				master.setId(rs.getInt(1));
+				
+				list.add(master);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	public int deleteNotConfirmedCharge(int id) {
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "delete from cart_product where invoiceid="+id+" ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			result = preparedStatement.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int deleteNotConfirmedinvoice() {
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "delete from cart_invoice where confirm=0 ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			result = preparedStatement.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	
 }

@@ -51,5 +51,13 @@ public interface ServiceDAO {
 
 	int updateUserInfo(int id, String address, String mobile,String landmark,String city,String pincode);
 
+	int updateConfirmCharge(int invoiceid);
+
+	ArrayList<Master> getNotConfirmedInvoiceList();
+
+	int deleteNotConfirmedCharge(int id);
+
+	int deleteNotConfirmedinvoice();
+
 
 }
