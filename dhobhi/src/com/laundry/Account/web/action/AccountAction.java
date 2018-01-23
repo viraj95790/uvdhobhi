@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.struts2.ServletActionContext;
 
+import com.laundry.common.utils.NumberToWord;
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
 import com.laundry.Account.eu.entity.Account;
@@ -136,7 +136,14 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
 			
 			Cart cart = itemlist.get(itemlist.size()-1);
 			accountForm.setOrderamount(cart.getOrderamount());
+			
 			accountForm.setDebit(cart.getDebit());
+			double debit = Double.parseDouble(cart.getDebit());
+			
+			NumberToWord obj = new NumberToWord();
+			String convertvalue = obj.convert((int) debit);
+			accountForm.setTotalinword(convertvalue);
+			
 			/*accountForm.setGst(cart.getGst());*/
 			accountForm.setTotalcgstvalue(cart.getTotalcgstvalue());
 			accountForm.setTotalsgstvalue(cart.getTotalsgstvalue());

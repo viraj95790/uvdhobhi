@@ -66,6 +66,8 @@ public class AccountForm {
 	
 	private String orderamount;
 	
+	private String totalinword;
+	
 	
 	
 	
@@ -87,6 +89,16 @@ public class AccountForm {
 	
 	
 	
+	
+	
+	public String getTotalinword() {
+		return totalinword;
+	}
+
+	public void setTotalinword(String totalinword) {
+		this.totalinword = totalinword;
+	}
+
 	public ArrayList<Cart> getMasterProductList() {
 		return masterProductList;
 	}

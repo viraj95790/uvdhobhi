@@ -298,7 +298,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 totwords" style=" margin-bottom: 10px;padding:0px;">
-                        <p style=" text-align: center; padding-top: 6px; padding-bottom: 6px;"><b>Total invoice amount in words</b></p>
+                        <p style=" text-align: center; padding-top: 6px; padding-bottom: 6px;"><b><s:property value="totalinword"/> Rupee Only</b></p>
 
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding:0px;">
