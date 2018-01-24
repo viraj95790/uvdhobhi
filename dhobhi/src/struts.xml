@@ -32,12 +32,12 @@
 		</action>
 		
 				
-		<action name="*Gmaillogin" method="{1}" class="com.laundry.main.web.action.GmailloginAction">
+		<action name="*Gmailslogin" method="{1}" class="com.laundry.main.web.action.GmailsloginAction">
 			<result name="success" type="redirect">Default</result>
 		</action>
 		
 		<action name="*Logout" method="{1}" class="com.laundry.main.web.action.LogoutAction">
-			<result name="success" type="redirect">inputLogin</result>
+			<result name="success" type="redirect">Default</result>
 		</action>
 		
 		   <action name="*Registration" method="{1}" class="com.laundry.Register.web.action.RegistrationAction">

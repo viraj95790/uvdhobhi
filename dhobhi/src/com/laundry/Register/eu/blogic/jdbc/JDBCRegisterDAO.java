@@ -203,7 +203,7 @@ public class JDBCRegisterDAO extends JDBCBaseDAO implements RegisterDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		Register register = new Register();
-		String sql = "select id, email, password, customer_type from registration where email = ? ";
+		String sql = "select id, email, password, customer_type, name from registration where email = ? ";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, email);
@@ -214,6 +214,7 @@ public class JDBCRegisterDAO extends JDBCBaseDAO implements RegisterDAO {
 				register.setEmail(rs.getString(2));
 				register.setPassword(rs.getString(3));
 				register.setUsertype(rs.getString(4));
+				register.setName(rs.getString(5));
 			}
 			
 		} catch (Exception e) {

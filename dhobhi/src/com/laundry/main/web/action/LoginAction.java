@@ -78,6 +78,7 @@ public class LoginAction extends BaseAction implements ModelDriven<RegisterForm>
 		loginInfo.setUserId(register.getEmail());
 		loginInfo.setUserType(Integer.parseInt(register.getUsertype()));
 		loginInfo.setSessionid(session.getId());
+		loginInfo.setName(register.getName());
 		
 		
 		

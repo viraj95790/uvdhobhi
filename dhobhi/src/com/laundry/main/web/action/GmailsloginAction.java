@@ -18,7 +18,7 @@ import com.laundry.main.web.common.helper.LoginInfo;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class GmailloginAction extends BaseAction implements ModelDriven<RegisterForm> {
+public class GmailsloginAction extends BaseAction implements ModelDriven<RegisterForm> {
 	
 	HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 	HttpSession session = request.getSession(true);

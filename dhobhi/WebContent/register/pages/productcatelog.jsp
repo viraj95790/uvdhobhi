@@ -91,7 +91,7 @@
                                                 <option value="Home Care" selected="">Home Care</option>
                                             </select> --%>
                                             
-                                            <s:select list="itemList" id="id" name="item" listKey="id" listValue="item" headerKey="0" headerValue="Select Item" 
+                                            <s:select list="itemList" id="id" name="item" listKey="id" listValue="item" headerKey="0" headerValue="Select Category" 
                                                                  onchange="setItemAjax(this.value)"  cssClass="form-control"></s:select>
                                         </div>
                                         <div class="col-lg-2 col-md-2" id="subitemdivid">

@@ -43,7 +43,7 @@
       document.getElementById("myP").style.visibility = "hidden";
       // document.getElementById("status").innerHTML = 'Welcome <a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
     		   
-       window.location.href='Gmaillogin?email='+email+'&name='+name+'';
+       window.location.href='Gmailslogin?email='+email+'&name='+name+'';
    }
    </script>
    <!--  <button onclick="myFunction()">Sign Out</button>  -->
