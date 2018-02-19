@@ -121,6 +121,10 @@
    	<put-attribute name="body" value="/register/pages/displaycartReport.jsp"/>      
   </definition>
   
+  <definition name="cartProductinfo" extends="adminbaseLayout1">
+   	<put-attribute name="body" value="/register/pages/cartproductinfo.jsp"/>      
+  </definition>
+  
 
   
   <definition name="sendotp" extends="baseLayout">
