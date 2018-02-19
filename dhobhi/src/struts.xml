@@ -37,7 +37,7 @@
 		</action>
 		
 		<action name="*Logout" method="{1}" class="com.laundry.main.web.action.LogoutAction">
-			<result name="success" type="redirect">Default</result>
+			<result name="success" type="redirect">inputLogin</result>
 		</action>
 		
 		   <action name="*Registration" method="{1}" class="com.laundry.Register.web.action.RegistrationAction">
@@ -57,6 +57,7 @@
 		    <result name="sendotp" type="tiles">sendotp</result>
 			<result name="thx" type="tiles">thx</result>
 			<result name="displaycart" type="tiles">displaycartReport</result>
+			<result name="showcartproduct" type="tiles">cartProductinfo</result>
 			<result name="createinvoice" type="redirect">Account</result>
 			
 		</action>
