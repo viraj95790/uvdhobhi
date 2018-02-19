@@ -192,7 +192,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <h4 class="subheading">GSTIN</h4>
-                        <h4 class="subheading">27AAICP903P43P1ZN</h4>
+                        <h4 class="subheading">27AAICP9043P1ZN</h4>
                     </div>
                 </div>
             </div>
@@ -209,14 +209,14 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" border-right: 1px solid #000; margin-bottom: 10px;">
                        <p><b>Invoice No:</b> <s:property value="id"/></p>
                         <p><b>Invoice Date:</b> <s:property value="date"/></p>
-                        <p><b>Name:</b> PDDR MEDICAL PRODUCTS & SERVICES(I) PRIVATE LIMITED</p>
-                        <p><b>GSTIN</b> 27AAICP9043P1ZN</p>
+                        <p><b>Name:</b> <s:property value="name"/></p>
+                        <!-- <p><b>GSTIN</b> 27AAICP9043P1ZN</p> -->
                         <p><b>State:</b> MAHARASHTRA</p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" margin-bottom: 10px;">
                         <p><b>Name:</b> <s:property value="name"/> </p>
                         <p><b>Address:</b> <s:property value="address"/> </p>
-                        <p><b>GSTIN</b></p>
+                        <!-- <p><b>GSTIN</b></p> -->
                         <p><b>State:</b> MAHARASHTRA</p>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                             </tr>
                         </thead>
                         <tfoot>
-                            <tr>
+                           <!--  <tr>
                                 <td colspan="4" style=" background-color: rgba(39, 166, 217, 0.59);text-align:center">Total</td>
                                 <td></td>
                                 <td></td>
@@ -252,7 +252,7 @@
                                 <td></td>
                                 
                                 
-                            </tr>
+                            </tr> -->
                         </tfoot>
                         <tbody>
                          <% int i = 1; %>
@@ -267,7 +267,7 @@
                                 <td><s:property value="price"/></td>
                                 <td><s:property value="totalamount"/></td>
                                 <td>0</td>
-                                <td>0</td>
+                                <td><s:property value="totalamount"/></td>
                                 <td colspan="2"><s:property value="cgst"/></td>
                                
                                 <td colspan="2"><s:property value="sgst"/></td>
@@ -283,7 +283,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 totwords" style=" margin-bottom: 10px;padding:0px;">
-                        <p style=" text-align: center; padding-top: 6px; padding-bottom: 6px;"><b><s:property value="totalinword"/> Rupee Only</b></p>
+                        <p style=" text-align: center; padding-top: 6px; padding-bottom: 6px;"><b><s:property value="totalinword"/> Rupees Only</b></p>
 
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding:0px;">
@@ -333,13 +333,19 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p><b>Bank Account :</b></p>
+                                        <p><b>Bank Account : 60290276886</b></p>
                                     </td>
 
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p><b>Bank IFSC :</b></p>
+                                        <p><b>Bank IFSC : MAHB0001046</b></p>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><b>Bank : Bank Of Maharashtra, Branch : Sawangi Deoli</b></p>
                                     </td>
 
                                 </tr>
@@ -355,7 +361,7 @@
                         <br />
                         <br />
                         <br />
-                        <p class="text-center" style=" border-top: 1px solid #000; padding: 5px 0px 5px 0px; margin-top: 6px;"><b>Common Seal</b></p>
+                        <p class="text-center" style=" border-top: 1px solid #000; padding: 5px 0px 5px 0px; margin-top: 6px;"><b>Seal</b></p>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0px; border-left: 1px solid #000;">
                         <table class="table table-bordered" style=" margin: 0px;">
