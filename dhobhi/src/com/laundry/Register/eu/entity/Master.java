@@ -6,6 +6,8 @@ public class Master {
 
 	private int id;
 	
+	private int serviceid;
+	
 	private String cartinvid;
 	
 	private String name;
@@ -55,6 +57,9 @@ public class Master {
 	private String pincode;
 
 	
+	ArrayList<Cart>productinfolist;
+	private String totalqty;
+	private String totalprice;
 	
 	
 	
@@ -62,6 +67,39 @@ public class Master {
 	
 	
 	
+	
+	public String getTotalqty() {
+		return totalqty;
+	}
+
+	public void setTotalqty(String totalqty) {
+		this.totalqty = totalqty;
+	}
+
+	public String getTotalprice() {
+		return totalprice;
+	}
+
+	public void setTotalprice(String totalprice) {
+		this.totalprice = totalprice;
+	}
+
+	public ArrayList<Cart> getProductinfolist() {
+		return productinfolist;
+	}
+
+	public void setProductinfolist(ArrayList<Cart> productinfolist) {
+		this.productinfolist = productinfolist;
+	}
+
+	public int getServiceid() {
+		return serviceid;
+	}
+
+	public void setServiceid(int serviceid) {
+		this.serviceid = serviceid;
+	}
+
 	public String getLandmark() {
 		return landmark;
 	}

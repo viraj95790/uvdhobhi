@@ -46,6 +46,7 @@ public class BarcodeAction extends BaseAction implements ModelDriven<MasterForm>
 			String fromDate = masterForm.getFromdate();
 			String toDate = masterForm.getTodate();	
 			String action = masterForm.getActiontype();
+			String vendorid = request.getParameter("vendorname");
 			if(!fromDate.equals("")){
 				String temp[]= fromDate.split("/");
 				fromDate = temp[2]+"-"+temp[1]+"-"+temp[0];
@@ -95,7 +96,7 @@ public class BarcodeAction extends BaseAction implements ModelDriven<MasterForm>
 			}
 			
 			if(action.equals("p")){
-				ArrayList<Master>prodtList = accountDAO.getProdBarcodeList(fromDate,toDate);
+				ArrayList<Master>prodtList = accountDAO.getProdBarcodeList(fromDate,toDate,vendorid,loginInfo.getUserType());
 				ArrayList<Master>totalBarcodeList = new ArrayList<Master>();
 				Code39 code128 = new Code39();
 				code128.setBarcodeWidth(3);

@@ -9,7 +9,7 @@ public interface ServiceDAO {
 
 	ArrayList<Master> getserviceList(String action);
 
-	ArrayList<Master> getitemList(String action);
+	ArrayList<Master> getitemList(String selectedid);
 
 	ArrayList<Master> getsubitemList(String selectedid, int id, int userType);
 
@@ -51,13 +51,17 @@ public interface ServiceDAO {
 
 	int updateUserInfo(int id, String address, String mobile,String landmark,String city,String pincode);
 
-	int updateConfirmCharge(int invoiceid);
-
 	ArrayList<Master> getNotConfirmedInvoiceList();
 
 	int deleteNotConfirmedCharge(int id);
 
 	int deleteNotConfirmedinvoice();
+
+	int updateConfirmCharge(int invoiceid);
+
+	
+	ArrayList<Master> getCustomerCartList(int vendorid, String fromDate,
+			String toDate);
 
 
 }

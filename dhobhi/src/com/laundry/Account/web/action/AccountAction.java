@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 import org.apache.struts2.ServletActionContext;
 
-import com.laundry.common.utils.NumberToWord;
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
 import com.laundry.Account.eu.entity.Account;
@@ -28,6 +29,7 @@ import com.laundry.Register.eu.entity.Master;
 import com.laundry.Register.eu.entity.Register;
 import com.laundry.Register.web.form.MasterForm;
 import com.laundry.common.utils.DateTimeUtils;
+import com.laundry.common.utils.NumberToWord;
 import com.laundry.main.eu.blogic.jdbc.Connection_provider;
 import com.laundry.main.web.action.BaseAction;
 import com.laundry.main.web.common.helper.LoginHelper;
@@ -132,7 +134,7 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
     		
     		
 			ArrayList<Cart> itemlist = accountDAO.getitemproductlist(selectedid, "");
-			accountForm.setMasterProductList(itemlist);
+           accountForm.setMasterProductList(itemlist);
 			
 			Cart cart = itemlist.get(itemlist.size()-1);
 			accountForm.setOrderamount(cart.getOrderamount());
@@ -340,48 +342,102 @@ public class AccountAction extends BaseAction implements Preparable, ModelDriven
 			Cart cart = accountDAO.getbarcodeinfo(selectedid);
 			
 			int result = accountDAO.insertbarcodedata(cart, selectedid, loginInfo);
+			StringBuffer str = new StringBuffer();
+			
 			
 			ArrayList<Cart> vendorlist = accountDAO.getvendor(loginInfo);
 			
 			for(Cart cart2 : vendorlist){
 				
-				ArrayList<Cart> productlist = accountDAO.displaycabrcodeinf(cart2.getVendor(), loginInfo);
-				
 				RegisterDAO registerDAO = new JDBCRegisterDAO(connection);
 				Register register = registerDAO.editregistration(cart2.getVendor());
 				String vendor = register.getName()+" "+register.getSurname();
 				
-				StringBuffer str = new StringBuffer();
 				str.append("<h4>"+vendor+"</h4>");
+				
+				ArrayList<Cart> custlist = accountDAO.getcustomerlist(cart2.getVendor());
+				
 				str.append("<table class='table table-custom' border='1'>");
 				str.append("<tr>"); 
-				str.append("<th>Productid</th>");
 				str.append("<th>Customer</th>");
-				str.append("<th>Item</th>");
-				str.append("<th>Subitem</th>");
-				str.append("<th>Quantity</th>");
-				str.append("<th>Price</th>");
-				
-				for(Cart cproduct : productlist ){
-					str.append("<tr>");
-					
-					str.append("<td>"+cproduct.getBarcodeid()+"</td>");
-					str.append("<td>"+cproduct.getCustomerid()+"</td>");
-					str.append("<td>"+cproduct.getItem()+"</td>");
-					str.append("<td>"+cproduct.getSubitem()+"</td>");
-					str.append("<td>"+cproduct.getQty()+"</td>");
-					str.append("<td>"+cproduct.getPrice()+"</td>");
-					
-					str.append("</tr>");
-				}
-				
+				str.append("<th>Mobile</th>");
+				str.append("<th>Address</th>");
 				str.append("</tr>");
-				str.append("<table>");
 				
-				response.setContentType("text/html");
-				response.setHeader("Cache-Control", "no-cache");
-				response.getWriter().write(str.toString());
+				for(Cart cart3 : custlist){
+					
+					Register register2 = registerDAO.editregistration(cart3.getCustomerid());
+					String customer =  register2.getName()+" "+register2.getSurname();
+					String mobile = register2.getMobile();
+					String address = register2.getAddress()+","+register2.getLandmark()+","+","+register2.getCity()+","+register2.getPincode();
+					
+					
+					
+					str.append("<tr>");
+					str.append("<td>"+customer+"</td>");
+					str.append("<td>"+mobile+"</td>");
+					str.append("<td>"+address+"</td>");
+					str.append("</tr>");
+					
+					
+					ArrayList<Cart> productlist = accountDAO.displaycabrcodeinf(cart2.getVendor(), loginInfo, cart3.getCustomerid());
+					
+					
+					
+					str.append("<table class='table table-custom' border='1'>");
+					str.append("<tr>"); 
+					str.append("<th>Productid</th>");
+					str.append("<th>Customer</th>");
+					str.append("<th>Mobile</th>");
+					str.append("<th>Address</th>");
+					str.append("<th>Item</th>");
+					str.append("<th>Subitem</th>");
+					str.append("<th>Quantity</th>");
+					str.append("<th>Price</th>");
+					
+					
+					for(Cart cproduct : productlist ){
+						str.append("<tr>");
+						
+						str.append("<td>"+cproduct.getBarcodeid()+"</td>");
+						str.append("<td>"+cproduct.getCustomerid()+"</td>");
+						str.append("<td>"+cproduct.getMobile()+"</td>");
+						str.append("<td>"+cproduct.getAddress()+"</td>");
+						str.append("<td>"+cproduct.getItem()+"</td>");
+						str.append("<td>"+cproduct.getSubitem()+"</td>");
+						str.append("<td>"+cproduct.getQty()+"</td>");
+						str.append("<td>"+cproduct.getPrice()+"</td>");
+						
+						str.append("</tr>");
+						
+						
+					}
+					
+					//get total quntity and price here
+					Cart cart4 = accountDAO.gettotalqp(cart2.getVendor(), loginInfo, cart3.getCustomerid());
+					
+					str.append("<tr>");
+					str.append("<td></td>");
+					str.append("<td></td>");
+					str.append("<td></td>");
+					str.append("<td></td>");
+					str.append("<td></td>");
+					str.append("<td></td>");
+					
+					str.append("<td style='font-weight:bold'>"+cart4.getTotalqty()+"</td>");
+					str.append("<td style='font-weight:bold'>"+cart4.getTotalprice()+"</td>");
+					str.append("</tr>");
+					
+					
+					str.append("<table>");
+				}
+				str.append("<table>");
 			}
+			
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			response.getWriter().write(str.toString());
 			
 		}catch(Exception e){
 			e.printStackTrace();

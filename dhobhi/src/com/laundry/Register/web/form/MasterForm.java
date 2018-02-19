@@ -2,6 +2,7 @@ package com.laundry.Register.web.form;
 
 import java.util.ArrayList;
 
+import com.laundry.Register.eu.entity.Cart;
 import com.laundry.Register.eu.entity.Master;
 
 public class MasterForm {
@@ -69,6 +70,8 @@ public class MasterForm {
 	private ArrayList<Master> customerList;
 	private ArrayList<Master> vendorList;
 	private ArrayList<Master> custinfo;
+	private ArrayList<Cart> cartproductinfoList;
+    private ArrayList<Master>custprodinfoList;
 	
 	private String fromdate = "";
 	
@@ -88,6 +91,24 @@ public class MasterForm {
 	
 	
 	
+	
+	
+	public ArrayList<Master> getCustprodinfoList() {
+		return custprodinfoList;
+	}
+
+	public void setCustprodinfoList(ArrayList<Master> custprodinfoList) {
+		this.custprodinfoList = custprodinfoList;
+	}
+
+	public ArrayList<Cart> getCartproductinfoList() {
+		return cartproductinfoList;
+	}
+
+	public void setCartproductinfoList(ArrayList<Cart> cartproductinfoList) {
+		this.cartproductinfoList = cartproductinfoList;
+	}
+
 	public String getLandmark() {
 		return landmark;
 	}

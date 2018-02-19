@@ -24,7 +24,7 @@ public interface AccountDAO {
 
 	ArrayList<Master> getcuustBarcodeList(String fromDate, String toDate);
 
-	ArrayList<Master> getProdBarcodeList(String fromDate, String toDate);
+	ArrayList<Master> getProdBarcodeList(String fromDate, String toDate, String vendorid, int userType);
 
 	ArrayList<Account> getvendorinvoiceList();
 
@@ -34,11 +34,17 @@ public interface AccountDAO {
 
 	ArrayList<Cart> getvendor(LoginInfo loginInfo);
 
-	ArrayList<Cart> displaycabrcodeinf(String vendor, LoginInfo loginInfo);
+	ArrayList<Cart> displaycabrcodeinf(String vendor, LoginInfo loginInfo, String customerid);
 
 	int deletebarcodedata(LoginInfo loginInfo);
-
+	
 	ArrayList<Cart> getitemproductlist(String selectedid, String string);
+
+	ArrayList<Cart> getcustomerlist(String vendor);
+
+
+
+	Cart gettotalqp(String vendor, LoginInfo loginInfo, String customerid);
 
 
 }

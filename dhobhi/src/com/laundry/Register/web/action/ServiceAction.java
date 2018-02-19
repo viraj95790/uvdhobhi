@@ -16,7 +16,6 @@ import org.apache.struts2.ServletActionContext;
 
 
 
-
 import com.laundry.Account.eu.bi.AccountDAO;
 import com.laundry.Account.eu.blogic.jdbc.JDBCAccountDAO;
 import com.laundry.Account.eu.entity.Account;
@@ -171,7 +170,6 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 	}
 	
 	public String thx(){
-		
 		Connection connection = null;
 		try{
 			connection = Connection_provider.getconnection();
@@ -183,7 +181,6 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return "thx";
 	}
 	
@@ -222,8 +219,8 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			ArrayList<Master> list = serviceDAO.getserviceList(action);
 			masterForm.setServiceList(list);
 			
-			ArrayList<Master> list2 = serviceDAO.getitemList(action);
-			masterForm.setItemList(list2);
+			/*ArrayList<Master> list2 = serviceDAO.getitemList(action);
+			masterForm.setItemList(list2);*/
 			
 			
 			
@@ -235,6 +232,39 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 		}
 		return "input";
 	}
+	
+	
+	public String getcategory(){
+		Connection connection = null;
+		String selectedid = request.getParameter("id");
+		try {
+			connection = Connection_provider.getconnection();
+			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
+			
+			ArrayList<Master> itemList = serviceDAO.getitemList(selectedid);
+			
+			StringBuffer str = new StringBuffer();
+			str.append("<select class='form-control' name='item' id='id' onchange='setItemAjax(this.value)' >");
+			str.append("<option value='0'>Select Category</option>");
+			
+			for(Master master : itemList){
+				
+				str.append("<option value='"+master.getId()+"'>"+master.getItem()+"</option>");
+			}
+			
+            str.append("</select>");
+			
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			response.getWriter().write(str.toString());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	public String id(){
 		Connection connection = null;
@@ -380,10 +410,12 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 				double totalprice = Double.parseDouble(cart.getTotalprice()) + gstvalue;
 				
 				total = total + totalprice;
+				
 			}
 			
 			System.out.println(orderamt);
 		    System.out.println(total);
+		    total = Math.round(total);
 		    
 		    int updatedebit = serviceDAO.getdebitupdated(invoiceid, total);
 		    
@@ -529,11 +561,11 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 	public String displaycart(){
 		Connection connection = null;
 		
+		String action = request.getParameter("action");
+		
 		String vendor = masterForm.getVendorname();
 		int vendorid = Integer.parseInt(vendor);
 		String customerid = masterForm.getName();
-		
-	
 		
 		
 		String fromDate = masterForm.getFromdate();
@@ -568,6 +600,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			connection = Connection_provider.getconnection();
 			ServiceDAO serviceDAO = new JDBCServiceDAO(connection);
 			
+			
 			//delete not confirmed charges
 			ArrayList<Master>invoiceList = serviceDAO.getNotConfirmedInvoiceList();
 			for(Master master : invoiceList){
@@ -575,7 +608,6 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			}
 			
 			int del = serviceDAO.deleteNotConfirmedinvoice();
-			
 					
 			//for vendor
 			if(loginInfo.getUserType()==2){
@@ -590,6 +622,19 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 			
 			ArrayList<Master> clienlist = serviceDAO.getcustomerlist(vendorid);
 			masterForm.setCustomerList(clienlist);
+			
+			
+			if(action.equals("1")){
+				
+				
+				ArrayList<Master>customeratList = serviceDAO.getCustomerCartList(vendorid, fromDate, toDate);
+				masterForm.setCustprodinfoList(customeratList);
+				
+			/*	ArrayList<Cart> cartinfolist = serviceDAO.getcartproductinfo(vendorid, fromDate, toDate);
+				masterForm.setCartproductinfoList(cartinfolist);*/
+				
+				return "showcartproduct";
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -616,6 +661,7 @@ public class ServiceAction extends BaseAction implements ModelDriven<MasterForm>
 				
 				 double debit = serviceDAO.getdebitAmount(selectedid);
 				 totaldeb = totaldeb + debit;
+				 totaldeb = Math.rint(totaldeb);
 				 
 				 int prodcharge = serviceDAO.savechargeproduct(invoiceid, selectedid);
 			}

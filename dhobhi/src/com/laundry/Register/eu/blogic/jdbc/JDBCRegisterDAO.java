@@ -32,7 +32,6 @@ public class JDBCRegisterDAO extends JDBCBaseDAO implements RegisterDAO {
 			
 			
 			preparedStatement = connection.prepareStatement(sql);
-			
 			preparedStatement.setString(1, register.getName());
 			preparedStatement.setString(2, register.getSurname());
 			preparedStatement.setString(3, register.getMobile());
@@ -271,15 +270,19 @@ public class JDBCRegisterDAO extends JDBCBaseDAO implements RegisterDAO {
 
 	public int saveGmailFBInfo(String email, String name, String fbId, String googleId, String userType) {
 		PreparedStatement preparedStatement = null;
+		String [] temp = name.split(" ");
+		 String fname = temp[0];
+		 String lastname = temp[1];
 		int result = 0;
-		String sql = "insert into registration (name,email,customer_type, usertype) values(?,?,?,?) ";
+		String sql = "insert into registration (name, email, customer_type, usertype, surname) values(?,?,?,?,?) ";
 		
 		try{
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, name);
+			preparedStatement.setString(1, fname);
 			preparedStatement.setString(2, email);
 			preparedStatement.setString(3, userType);
 			preparedStatement.setString(4, userType);
+			preparedStatement.setString(5, lastname);
 			
 			result = preparedStatement.executeUpdate();
 			

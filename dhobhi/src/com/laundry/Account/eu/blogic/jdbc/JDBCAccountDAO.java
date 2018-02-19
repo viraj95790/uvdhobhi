@@ -18,6 +18,7 @@ import com.laundry.Register.eu.entity.Master;
 import com.laundry.Register.eu.entity.Register;
 import com.laundry.common.utils.DateTimeUtils;
 import com.laundry.main.eu.blogic.jdbc.JDBCBaseDAO;
+import com.laundry.main.web.common.helper.LoginHelper;
 import com.laundry.main.web.common.helper.LoginInfo;
 
 public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
@@ -487,14 +488,23 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 
 
 	
-	public ArrayList<Master> getProdBarcodeList(String fromDate, String toDate) {
+	public ArrayList<Master> getProdBarcodeList(String fromDate, String toDate, String vendorid, int userType) {
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master>list = new ArrayList<Master>();
 		toDate = toDate + " 23:55:55";
-		String sql = "SELECT cart_product.id, concat(name,' ',surname),subitem,quantity FROM cart_product inner join cart_invoice on "
+		String sql = "";
+		if(userType==2){
+		 sql = "SELECT cart_product.id, concat(name,' ',surname),subitem,quantity FROM cart_product inner join cart_invoice on "
 				+ " cart_invoice.id = cart_product.invoiceid "
 				+ " inner join registration on registration.id = cart_invoice.customerid "
-				+ " where date between '"+fromDate+"' and '"+toDate+"' ";
+				+ " where date between '"+fromDate+"' and '"+toDate+"' and cart_invoice.vendor="+vendorid+" ";
+		}
+		else{
+		 sql = "SELECT cart_product.id, concat(name,' ',surname),subitem,quantity FROM cart_product inner join cart_invoice on "
+					+ " cart_invoice.id = cart_product.invoiceid "
+					+ " inner join registration on registration.id = cart_invoice.customerid "
+					+ " where date between '"+fromDate+"' and '"+toDate+"' ";
+		}
 		
 		try{
 			preparedStatement = connection.prepareStatement(sql);
@@ -508,7 +518,7 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 				list.add(master);
 				
 				if(qty>1){
-					for(int i=1;i<qty;i++){
+					for(int i=1;i<=qty;i++){
 						list.add(master);
 					}
 				}
@@ -611,14 +621,38 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 		return vendorlist;
 	}
 
+	
+	@Override
+	public ArrayList<Cart> getcustomerlist(String vendor) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		ArrayList<Cart> list = new ArrayList<Cart>();
+		String sql = "select id,  customerid from barcode_reader where vendor='"+vendor+"' group by customerid  ";
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				Cart cart = new Cart();
+				cart.setId(rs.getInt(1));
+				cart.setCustomerid(rs.getString(2));
+			    
+			    list.add(cart);
+				
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	
-	public ArrayList<Cart> displaycabrcodeinf(String vendor, LoginInfo loginInfo) {
+	public ArrayList<Cart> displaycabrcodeinf(String vendor, LoginInfo loginInfo, String customerid) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Cart> list = new ArrayList<Cart>();
 		String logid = loginInfo.getId()+loginInfo.getSessionid();
-		String sql = "select id, item, subitem, quantity, price, customerid, vendor, barcodeid from barcode_reader where vendor='"+vendor+"' and logsessionid='"+logid+"' "; 
+		String sql = "select id, item, subitem, quantity, price, customerid, vendor, barcodeid from barcode_reader where vendor='"+vendor+"' and logsessionid='"+logid+"' and customerid="+customerid+"  "; 
 		try{
 			
 			preparedStatement = connection.prepareStatement(sql);
@@ -639,6 +673,8 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 			    RegisterDAO registerDAO = new JDBCRegisterDAO(connection);
 			    Register register = registerDAO.editregistration(rs.getString(6));
 			    cart.setCustomerid(register.getName()+" "+register.getSurname());
+			    cart.setMobile(register.getMobile());
+			    cart.setAddress(register.getAddress()+","+register.getLandmark()+","+register.getPincode()+","+register.getCity());
 			    register = registerDAO.editregistration(rs.getString(7));
 			    cart.setVendor(register.getName()+" "+register.getSurname());
 			    cart.setBarcodeid(rs.getString(8));
@@ -673,5 +709,27 @@ public class JDBCAccountDAO extends JDBCBaseDAO implements AccountDAO {
 	}
 
 
+	@Override
+	public Cart gettotalqp(String vendor, LoginInfo loginInfo, String customerid) {
+		// TODO Auto-generated method stu
+		PreparedStatement preparedStatement = null;
+		Cart cart =  new Cart();
+		String logid = loginInfo.getId()+loginInfo.getSessionid();
+		String sql = "select sum(quantity), sum(price) from barcode_reader where customerid="+customerid+" and vendor="+vendor+" and logsessionid='"+logid+"' ";
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				cart.setTotalqty(rs.getString(1));
+				cart.setTotalprice(rs.getString(2));
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return cart;
+	}
 
+
+	
 	}

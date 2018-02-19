@@ -71,8 +71,6 @@ public class AccountForm {
 	
 	
 	
-	
-	
 	private ArrayList<Account> chargeinvList;
 	private ArrayList<Master> customerList;
 	/*private ArrayList<Account> masterProductList;*/
@@ -80,9 +78,9 @@ public class AccountForm {
 	ArrayList<Master>vendorList;
 	
 	
+	
 	private ArrayList<Cart> masterProductList;
 	
-	
 
 	
 	
@@ -91,10 +89,13 @@ public class AccountForm {
 	
 	
 	
-	
-	
-	
-	
+	public ArrayList<Cart> getMasterProductList() {
+		return masterProductList;
+	}
+
+	public void setMasterProductList(ArrayList<Cart> masterProductList) {
+		this.masterProductList = masterProductList;
+	}
 
 	public String getTotalinword() {
 		return totalinword;
@@ -102,14 +103,6 @@ public class AccountForm {
 
 	public void setTotalinword(String totalinword) {
 		this.totalinword = totalinword;
-	}
-
-	public ArrayList<Cart> getMasterProductList() {
-		return masterProductList;
-	}
-
-	public void setMasterProductList(ArrayList<Cart> masterProductList) {
-		this.masterProductList = masterProductList;
 	}
 
 	public String getOrderamount() {
@@ -312,7 +305,13 @@ public class AccountForm {
 		this.date = date;
 	}
 
-	
+	/*public ArrayList<Account> getMasterProductList() {
+		return masterProductList;
+	}
+
+	public void setMasterProductList(ArrayList<Account> masterProductList) {
+		this.masterProductList = masterProductList;
+	}*/
 
 	public String getName() {
 		return name;

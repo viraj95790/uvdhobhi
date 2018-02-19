@@ -83,7 +83,6 @@ public class LoginAction extends BaseAction implements ModelDriven<RegisterForm>
 		
 		
 		
-		
 		session.setAttribute("logininfo", loginInfo);
 		LoginHelper.saveLoginInfo(request, loginInfo);
 		

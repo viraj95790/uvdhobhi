@@ -43,18 +43,18 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return list;
 	}
 
-	public ArrayList<Master> getitemList(String action) {
+	public ArrayList<Master> getitemList(String selectedid) {
 		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master> list = new ArrayList<Master>();
-		String a = "";
+		/*String a = "";
 		if(action.equals("d")){
 			a = "2";
 		}else{
 			a = "1";
-		}
+		}*/
 		
-		String sql = "select id, name from l_item where type='"+a+"'";
+		String sql = "select id, name from l_item where type='"+selectedid+"'";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -299,7 +299,7 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 				cart.setTotalcgstvalue(DateTimeUtils.changeFormat(totalcgstvalue));
 				cart.setTotalsgstvalue(DateTimeUtils.changeFormat(totalsgstvalue));
 				cart.setGst(gst);
-				cart.setTotalprice(Double.toString(tp));
+				cart.setTotalprice(DateTimeUtils.changeFormat(tp));
 				productlist.add(cart);
 			}
 			
@@ -690,23 +690,9 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return result;
 	}
 
-	public int updateConfirmCharge(int invoiceid) {
-		PreparedStatement preparedStatement = null;
-		int result = 0;
-		String sql = "update cart_invoice set confirm=1 where id = "+invoiceid+" ";
-		
-		try{
-			preparedStatement = connection.prepareStatement(sql);
-			result = preparedStatement.executeUpdate();
-					
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return result;
-	}
-
+	
 	public ArrayList<Master> getNotConfirmedInvoiceList() {
+		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		ArrayList<Master>list = new ArrayList<Master>();
 		String sql = "SELECT id FROM cart_invoice where confirm = 0 ";
@@ -724,11 +710,12 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return list;
 	}
 
+	
 	public int deleteNotConfirmedCharge(int id) {
+		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		String sql = "delete from cart_product where invoiceid="+id+" ";
@@ -743,7 +730,9 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return result;
 	}
 
+	
 	public int deleteNotConfirmedinvoice() {
+		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		int result = 0;
 		String sql = "delete from cart_invoice where confirm=0 ";
@@ -758,5 +747,99 @@ public class JDBCServiceDAO extends JDBCBaseDAO implements ServiceDAO {
 		return result;
 	}
 
+	
+	public int updateConfirmCharge(int invoiceid) {
+		// TODO Auto-generated method stub
+		PreparedStatement preparedStatement = null;
+		int result = 0;
+		String sql = "update cart_invoice set confirm=1 where id = "+invoiceid+" ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			result = preparedStatement.executeUpdate();
+					
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
+	public ArrayList<Cart> getcartproductinfo(int vendorid, String fromDate, String toDate,String customerid) {
+		// TODO Auto-generated method stub
+		toDate = toDate + " 23:55:55";
+		PreparedStatement preparedStatement = null;
+		ArrayList<Cart> list = new ArrayList<Cart>();
+		String sql = "select name, surname, mobile, address, subitem, quantity, price from registration inner join cart_invoice "
+				+ "on cart_invoice.customerid=registration.id inner join cart_product "
+				+ "on cart_product.invoiceid=cart_invoice.id "
+				+ "where date between '"+fromDate+"' and '"+toDate+"' and cart_invoice.vendor="+vendorid+" and cart_invoice.customerid="+customerid+" ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				Cart cart = new Cart();
+				cart.setName(rs.getString(1)+" "+rs.getString(2));
+				cart.setAddress(rs.getString(4));
+				
+				cart.setMobile(rs.getString(3));
+				cart.setSubitem(rs.getString(5));
+				cart.setQty(rs.getString(6));
+				cart.setPrice(rs.getString(7));
+				
+				list.add(cart);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	public ArrayList<Master> getCustomerCartList(int vendorid, String fromDate,
+			String toDate) {
+		toDate = toDate + " 23:55:55";
+		PreparedStatement preparedStatement = null;
+		ArrayList<Master> list = new ArrayList<Master>();
+		String sql = "select name, surname, mobile, address, cart_invoice.customerid,sum(quantity),sum(quantity*price) from registration inner join cart_invoice "
+				+ "on cart_invoice.customerid=registration.id inner join cart_product "
+				+ "on cart_product.invoiceid=cart_invoice.id "
+				+ "where date between '"+fromDate+"' and '"+toDate+"' and cart_invoice.vendor="+vendorid+" group by cart_invoice.customerid ";
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()){
+				Master master = new Master();
+				master.setName(rs.getString(1)+" "+rs.getString(2));
+				master.setAddress(rs.getString(4));
+				
+				master.setMobile(rs.getString(3));
+				
+				String customerid = rs.getString(5);
+				
+				String totalqty = rs.getString(6);
+				String totalprice = rs.getString(7);
+				master.setTotalqty(totalqty);
+				master.setTotalprice(totalprice);
+				
+				
+				
+				ArrayList<Cart>productinfolist = getcartproductinfo(vendorid,fromDate,toDate,customerid);
+				master.setProductlist(productinfolist);
+				
+				list.add(master);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
 	
 }
