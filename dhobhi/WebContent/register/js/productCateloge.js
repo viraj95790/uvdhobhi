@@ -1,4 +1,35 @@
 
+function setitemcategory(serviceid){
+	
+ var url = "getcategoryService?id="+serviceid+" ";
+	 
+	 if (window.XMLHttpRequest) {
+			req = new XMLHttpRequest();
+		}
+		else if (window.ActiveXObject) {
+			isIE = true;
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+		}   
+	               
+	    req.onreadystatechange = setitemcategoryRequest;
+	    req.open("GET", url, true); 
+	              
+	    req.send(null);
+}
+ 
+ function setitemcategoryRequest(){
+	 
+	 if (req.readyState == 4) {
+			if (req.status == 200) {
+				
+				document.getElementById('itemdivid').innerHTML = req.responseText;
+
+			}
+		}
+ }
+ 
+ 
+
  function setItemAjax(id){
 	 
 	 var url = "idService?id="+id+" ";
@@ -105,6 +136,8 @@ function getcustorder(){
 }
 
  function getcustomerlist(){
+	 document.getElementById('cd1').target = '';
+	 document.getElementById('hdnaction').value = 0;
 	 document.getElementById('cd1').submit();
  }
 
@@ -279,4 +312,27 @@ function openVbarcode(action){
 		 window.location.href='sendotpService';
 	 }
 	 
+ }
+ 
+ 
+ function showcartlistpage(){
+	 
+	 document.getElementById('cd1').target = 'formtarget';
+	 
+	 var t = 'formtarget';
+
+		document.getElementById('hdnaction').value = 1;
+
+		/* document.getElementById('getPatientRecord').submit(); */
+
+		var left = (screen.width / 2) - (700 / 2);
+		var top = (screen.height / 2) - (550 / 2);
+		
+		var oldwindow = window.open("", t,
+				"status = 1,height = "+openpopupheight +",width = "+openpopupwidth +",resizable = 1,scrollbars=yes,left=" + 0
+						+ ",top=" + 50);
+		
+		oldwindow.focus();
+
+		document.getElementById('cd1').submit();
  }

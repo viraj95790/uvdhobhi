@@ -30,7 +30,7 @@
                                     <div class="form-group">
                                     <label>Service Name :</label>
                                         <%-- <s:text type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name" title="First Name" tabindex="1"/> --%>
-                                       <s:select list="serviceList" id="id" name="services" listKey="id" listValue="services" headerKey="0" 
+                                       <s:select list="serviceList" id="serviceid" name="services" listKey="id" listValue="services" headerKey="0" 
                                                  headerValue="Select Service" cssClass="form-control" theme="simple"/> 
                                     </div>
                                 </div>

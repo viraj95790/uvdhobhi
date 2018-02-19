@@ -1,5 +1,6 @@
   <%@ taglib uri="/struts-tags" prefix="s" %>
   
+  <script type="text/javascript" src="register/js/productCateloge.js"></script>
   
   
   
@@ -38,15 +39,30 @@
                                 
                                 </div>
                             </div>
-                    
-                         <div class="row">
+                            
+                             <div class="row">
                             <div class="col-lg-12 col-md-12 col-xs-12">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
+                                    <label>Service :</label>
+                                        <%-- <s:text type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name" title="First Name" tabindex="1"/> --%>
+                                         <s:select  id="serviceid" name="services" list="serviceList" listKey="id" listValue="services"  headerKey="0" 
+                                                 headerValue="Select Service" onchange="setitemcategory(this.value)" cssClass="form-control" theme="simple"/> 
+                                    </div>
+                                </div>
+                                
+                                </div>
+                            </div>
+                    
+                         <div class="row">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <div class="col-lg-6 col-md-6 col-sm-6" id="itemdivid">
+                                    <div class="form-group">
                                     <label>Item :</label>
                                         <%-- <s:text type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name" title="First Name" tabindex="1"/> --%>
-                                       <s:select list="itemList" id="id" name="item" listKey="id" listValue="item" headerKey="0" 
-                                                 headerValue="Select Item" cssClass="form-control" theme="simple"/> 
+                                      <select id="id" name="item" onchange="setItemAjax(this.value)" class="form-control">
+											      <option value="0">Select Category</option>
+												</select> 
                                     </div>
                                 </div>
                                 

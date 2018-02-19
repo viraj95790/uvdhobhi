@@ -48,7 +48,8 @@
 			<div class="">
 				<div class="bs-example bs-example-tabs" role="tabpanel"
 					data-example-id="togglable-tabs" style="font-size: 15px;">
-					<s:form id="cd1" action="displaycartService" theme="simple">
+					<s:form id="cd1" action="displaycartService" theme="simple" >
+					<input type="hidden" name="action" id="hdnaction" value="0"/>
 						<div class="col-lg-2 col-sm-1 col-dm-1" >
 	                              		<s:textfield readonly="true" name="fromdate" id="fromDate" placeholder="FromDate"
 							cssClass="form-control" theme="simple"></s:textfield>
@@ -81,9 +82,14 @@
 							<div>
 								<s:select cssClass="form-control" id="name" name="name"
 									list="customerList" listKey="id" listValue="name" headerKey="0"
-									headerValue="Select Customer" onchange="getcustorder()"></s:select>
+									headerValue="Select Customer" onchange="getcustomerlist()"></s:select>
 							</div>
 						</div>
+						
+						<div class="col-lg-3 col-sm-1 col-dm-1" >
+							<a href="#" onclick="showcartlistpage()"><b><u>View cart Info</u></b></a>
+						</div>
+						
 					</s:form>
 					
 					<s:form action="vendorBarcode" id="vbarcodefrm" target="formtarget" theme="simple">
@@ -92,15 +98,17 @@
 						<s:hidden name="fromdate" id="vfromdate"/>
 						<s:hidden name="todate" id="vtodate"/>
 						<s:hidden name="actiontype" id="action"/>
+						<s:hidden name="vendorname" id="vendorname"/>
+						
 						<div class="col-lg-3 col-sm-1 col-dm-1" >
-							<a href="#" onclick="openVbarcode('v')" title="Vendor Barcide"><b><u>V</u></b></a> 
+							<a href="#" onclick="openVbarcode('v')" title="Vendor Barcode"><b><u>V</u></b></a> 
 						</div>
 						
 						<div class="col-lg-3 col-sm-1 col-dm-1" >
-							<a href="#" onclick="openVbarcode('c')" title="Customer Barcide"><b><u>C</u></b></a> 
+							<a href="#" onclick="openVbarcode('c')" title="Customer Barcode"><b><u>C</u></b></a> 
 						</div>
 						<div class="col-lg-3 col-sm-1 col-dm-1" >
-							<a href="#" onclick="openVbarcode('p')" title="Vendor Barcide"><b><u>P</u></b></a> 
+							<a href="#" onclick="openVbarcode('p')" title="Product Barcode"><b><u>P</u></b></a> 
 						</div>
 					</div>
 				</s:form>	

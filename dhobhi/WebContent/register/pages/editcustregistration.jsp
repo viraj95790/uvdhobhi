@@ -30,7 +30,7 @@
                                         <option value="Corporate">Corporate</option>
                                     </select> --%>
                                     <label>Customer Type :</label>
-                                    <s:select list="customerTypeList" id="id" name="customer_type" listKey="customer_type" listValue="customer_type" headerKey="0" headerValue="Select Type" theme="simple"></s:select>
+                                    <s:select list="customerTypeList" id="id" name="customer_type" listKey="id" listValue="customer_type" headerKey="0" headerValue="Select Type" theme="simple"></s:select>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 stscutreg">
 

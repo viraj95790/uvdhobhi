@@ -73,13 +73,14 @@
                                     <label for="pwd">Select The Item</label>
                                     <div class="col-lg-12 col-md-12" style="padding:0px;">
                                     <div class="col-lg-2 col-md-2" style="padding-left:0px;">
-                                           <s:select list="serviceList" id="serviceid" name="services" listKey="serviceid" listValue="services" headerKey="0" headerValue="Select Service" 
-                                                                       cssClass="form-control">
+                                           <s:select  id="serviceid" name="services" list="serviceList" listKey="id" listValue="services" 
+                                           headerKey="0" headerValue="Select Service" 
+                                                            onchange="setitemcategory(this.value)"  cssClass="form-control">
                                    </s:select>
                                             
                                             
                                         </div>
-                                        <div class="col-lg-2 col-md-2" style="padding-left:0px;">
+                                        <div class="col-lg-2 col-md-2" id="itemdivid" style="padding-left:0px;">
                                             <%-- <select name="pickup_time" class="form-control">
                                                 <option value="Select Cloth">Select All</option>
                                                 <option value="Mens Wear">Mens Wear</option>
@@ -91,8 +92,9 @@
                                                 <option value="Home Care" selected="">Home Care</option>
                                             </select> --%>
                                             
-                                            <s:select list="itemList" id="id" name="item" listKey="id" listValue="item" headerKey="0" headerValue="Select Category" 
-                                                                 onchange="setItemAjax(this.value)"  cssClass="form-control"></s:select>
+                                            <select id="id" name="item" onchange="setItemAjax(this.value)" class="form-control">
+											      <option value="0">Select Category</option>
+												</select>
                                         </div>
                                         <div class="col-lg-2 col-md-2" id="subitemdivid">
                                              <%-- <select name="pickup_time" class="form-control">
