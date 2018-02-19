@@ -26,7 +26,7 @@
                                     </li>
                                     
                                       <li class="activeli">
-                                        <a href="displaycartService">Create Invoice</a>
+                                        <a href="displaycartService?action=0">Create Invoice</a>
                                     </li>
                                     
                                     <li class="activeli">
@@ -46,7 +46,7 @@
                                     </li>
                                     
                                     <li class="activeli">
-                                        <a href="displaycartService">Create Invoice</a>
+                                        <a href="displaycartService?action=0">Create Invoice</a>
                                     </li>
                                     
                                     <li class="activeli">

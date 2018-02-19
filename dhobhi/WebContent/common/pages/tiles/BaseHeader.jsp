@@ -108,12 +108,13 @@
                         		 </li>
                             
                              <%}else{ %>
-                               	 <li>
-                             		<a href="Logout" onclick="myFunction()">Logout</a>
-                        		 </li>
-                        		 <% LoginInfo loginInfo =(LoginInfo) session.getAttribute("logininfo"); %>
+                               	 
+                        		  <% LoginInfo loginInfo =(LoginInfo) session.getAttribute("logininfo"); %>
                         		 <li>
                              		<a><%=loginInfo.getName() %></a> 
+                        		 </li>
+                        		 <li>
+                             		<a href="Logout" onclick="myFunction()">Logout</a>
                         		 </li>
                                 
                               <%} %>
