@@ -112,9 +112,10 @@
                     <td class="tg-rpan" colspan="8">फोन नंबर</td>
                     <td class="tg-rpan" colspan="12">: 07152-251437 ई-मेल : - mahilashram_2014marathi@rediffmail.com</td>
                 </tr>
+                <%Certificate certificate = (Certificate) session.getAttribute("certificate"); %>
                 <tr>
-                    <td class="tg-rpan" colspan="8">अनुक्रमांक : </td>
-                    <td class="tg-rpan" colspan="12">  जनरल रजि. क्र.: </td>
+                    <td class="tg-rpan" colspan="8">अनुक्रमांक : <%=certificate.getId() %> </td>
+                    <td class="tg-rpan" colspan="12">  जनरल रजि. क्र.: <%=certificate.getRegister_number() %> </td>
                 </tr>
                 <tr>
                     <td class="tg-rpan" colspan="8">शाळा मान्यता क्र.</td>
@@ -128,7 +129,7 @@
                 <tr>
                     <td class="tg-74rq" colspan="20">शाळा सोडण्याचे प्रमाणपत्र</td>
                 </tr>
-                <%Certificate certificate = (Certificate) session.getAttribute("certificate"); %>
+                
                 <tr>
                     <td class="tg-rpan" colspan="20">स्टुडंट आय. डी.  : <%=certificate.getStudentid() %></td>
                 </tr>
